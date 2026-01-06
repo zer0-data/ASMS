@@ -47,4 +47,17 @@ echo "Running Ablation..."
 
 python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.3 --tau 0.85 --name "ASMS_Ablation_HighEntropy"
 
+
+# --- SET 5: MANEUVER B (Entropy Alignment Sweep) ---
+# Sweep h_peak with fixed Golden Balanced settings (beta=0.8, lam=0.5, tau=0.85).
+# This tests whether the "Flicker Zone" peak at ~0.1 is optimal or if other entropy
+# thresholds produce better results. Tests: 0.05 (lower), 0.2 (higher), 0.3 (very high).
+# (0.1 is already covered in Golden Zone Balanced)
+# ------------------------
+echo "Running Maneuver B (Entropy Sweep)..."
+
+python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.05 --tau 0.85 --name "ASMS_Entropy_0.05"
+python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.2 --tau 0.85 --name "ASMS_Entropy_0.2"
+python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.3 --tau 0.85 --name "ASMS_Entropy_0.3"
+
 echo "All experiments completed."

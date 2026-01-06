@@ -24,6 +24,14 @@ where $\mathbf{E}(\cdot)$ is the embedding function.
 The Momentum Update Rule becomes:
 $$d_t = (C_t - C_{t-1}) + \beta \cdot \mathcal{S}_t \cdot d_{t-1}$$
 
+### 2.1.1. Kinetic-Only Ablation ("No Semantics")
+Anisotropy in LLM embedding spaces can weaken the signal-to-noise ratio of Cosine Similarity ($\mathcal{S}_t$). If $\mathcal{S}_t \approx 0.9$ for all token pairs, it acts merely as a constant damping factor rather than a semantic gate.
+
+The **Kinetic-Only** mode ($\mathcal{S}_t = 1$) isolates the pure momentum trajectory:
+$$d_t = (C_t - C_{t-1}) + \beta_t \cdot d_{t-1}$$
+
+If oscillation is driven primarily by confidence instability rather than semantic drift, this mode may improve performance and speed by bypassing embedding lookups.
+
 ### 2.2. Gamma-Skewed Entropy Decay (Refined Anti-Stubbornness)
 To precisely target "Temporal Oscillation" without locking in confident errors, we use a skewed momentum schedule. Oscillation typically occurs at **low normalized entropy** (binary/ternary conflicts, $\bar{H} \approx 0.1$), whereas high entropy indicates broad confusion.
 

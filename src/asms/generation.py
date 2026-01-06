@@ -29,6 +29,7 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                  conf_alg='random', mode="linear", rcr=False, top_p=None, top_k=None,
                  # ASMS arguments
                  asms=False, beta_base=0.8, h_peak=0.1, lambda_mom=0.5, sim_thresh=0.5, breakout_thresh=0.85,
+                 semantic=True, # New argument for Kinetic-Only Mode
                  # Optimization
                  return_intermediates=False):
     '''
@@ -56,11 +57,18 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
             momentum_buffer = torch.zeros_like(x, dtype=torch.float32)
             prev_confidence = torch.zeros_like(x, dtype=torch.float32)
             # Precompute embedding shape for initialization
-            input_embeddings = model.get_input_embeddings().weight
-            embed_dim = input_embeddings.shape[1]
-            vocab_size = input_embeddings.shape[0]
-            max_entropy = np.log(vocab_size)
-            prev_x0_embeddings = torch.zeros((x.shape[0], x.shape[1], embed_dim), device=x.device, dtype=torch.float32)
+            max_entropy = 0.0
+            prev_x0_embeddings = None
+            if semantic:
+                input_embeddings = model.get_input_embeddings().weight
+                embed_dim = input_embeddings.shape[1]
+                vocab_size = input_embeddings.shape[0]
+                max_entropy = np.log(vocab_size)
+                prev_x0_embeddings = torch.zeros((x.shape[0], x.shape[1], embed_dim), device=x.device, dtype=torch.float32)
+            else:
+                input_embeddings = model.get_input_embeddings().weight
+                vocab_size = input_embeddings.shape[0]
+                max_entropy = np.log(vocab_size)
             
             # Precompute Gamma-Skewed Parameters
             # Gamma calculation for peak at h_peak
@@ -114,9 +122,10 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                 # ASMS Logic
                 if asms:
                     # Semantic Hysteresis
-                    current_embeddings = model.get_input_embeddings()(x0) # (B, L, D)
-                    # Normalize embeddings once for efficient cosine similarity
-                    current_embeddings_norm = F.normalize(current_embeddings, p=2, dim=-1)
+                    if semantic:
+                        current_embeddings = model.get_input_embeddings()(x0) # (B, L, D)
+                        # Normalize embeddings once for efficient cosine similarity
+                        current_embeddings_norm = F.normalize(current_embeddings, p=2, dim=-1)
 
                     # Check for first step to avoid Division by Zero and Momentum Kick
                     is_first_step = (i == 0)
@@ -128,8 +137,11 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                         final_score = confidence
                     else:
                         # Standard ASMS Logic
-                        # Optimized cosine similarity: dot product of normalized vectors
-                        similarity = torch.sum(current_embeddings_norm * prev_x0_embeddings, dim=-1) # (B, L)
+                        if semantic:
+                            # Optimized cosine similarity: dot product of normalized vectors
+                            similarity = torch.sum(current_embeddings_norm * prev_x0_embeddings, dim=-1) # (B, L)
+                        else:
+                            similarity = 1.0
                         
                         # Gamma-Skewed Entropy-Gated Decay
                         # Use precomputed log_p for stability
@@ -151,8 +163,10 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                     # Update State (Always happens)
                     momentum_buffer = momentum_updated.clone()
                     prev_confidence = confidence.clone()
-                    # Store normalized embeddings for next step's similarity calculation
-                    prev_x0_embeddings = current_embeddings_norm.clone()
+                    prev_confidence = confidence.clone()
+                    if semantic:
+                        # Store normalized embeddings for next step's similarity calculation
+                        prev_x0_embeddings = current_embeddings_norm.clone()
                     
                     # Compute Remasking Score
                     # If confidence > breakout, trust region activated

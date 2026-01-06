@@ -37,7 +37,8 @@ out, _, _, _ = sample(
     asms=True,      # Enable ASMS
     beta_base=0.8,  # Momentum decay
     h_peak=0.1,     # Flicker Zone (Normalized Entropy)
-    lambda_mom=0.5  # Momentum weight
+    lambda_mom=0.5, # Momentum weight
+    semantic=True   # Set False for "Kinetic-Only" mode (No Semantics)
 )
 
 print(tokenizer.batch_decode(out, skip_special_tokens=True)[0])

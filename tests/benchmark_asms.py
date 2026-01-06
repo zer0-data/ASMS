@@ -4,6 +4,7 @@ import time
 import json
 import re
 import numpy as np
+from datetime import datetime
 from datasets import load_dataset
 from transformers import AutoTokenizer
 from asms import LLaDAModelLM, sample
@@ -44,6 +45,50 @@ def calculate_flicker(intermediate_results, check_last_n=16):
         total_checks += 1
         
     return flickers / total_checks
+
+def save_summary_txt(args, agg_metrics, configurations):
+    """
+    Saves a summary txt file with hyperparameter config and metrics.
+    """
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    txt_filename = f"{args.name}_summary_{timestamp}.txt"
+    
+    with open(txt_filename, "w") as f:
+        f.write("="*80 + "\n")
+        f.write(f"ASMS Benchmark Summary\n")
+        f.write(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        f.write("="*80 + "\n\n")
+        
+        # Hyperparameter Config
+        f.write("HYPERPARAMETER CONFIGURATION\n")
+        f.write("-" * 80 + "\n")
+        f.write(f"Experiment Name: {args.name}\n")
+        f.write(f"Mode: {args.mode.upper()}\n")
+        if args.mode == "asms":
+            f.write(f"  - Beta (Momentum Decay): {args.beta}\n")
+            f.write(f"  - Lambda (Momentum Weight): {args.lam}\n")
+            f.write(f"  - H_Peak (Flicker Zone): {args.h_peak}\n")
+            f.write(f"  - Tau (Breakout Threshold): {args.tau}\n")
+        f.write("\n")
+        
+        # Results Summary
+        f.write("RESULTS SUMMARY\n")
+        f.write("-" * 80 + "\n")
+        f.write(f"{'Method':<20} | {'Accuracy (%)':<15} | {'Avg Flicker':<15} | {'Avg Time (s)':<15}\n")
+        f.write("-" * 80 + "\n")
+        
+        for cfg_name, metrics in agg_metrics.items():
+            if metrics["total"] > 0:
+                acc = (metrics["correct"] / metrics["total"]) * 100
+                avg_flicker = metrics["flicker_sum"] / metrics["total"]
+                avg_time = metrics["time_sum"] / metrics["total"]
+                f.write(f"{cfg_name:<20} | {acc:<15.2f} | {avg_flicker:<15.2f} | {avg_time:<15.2f}\n")
+            else:
+                f.write(f"{cfg_name:<20} | {'N/A':<15} | {'N/A':<15} | {'N/A':<15}\n")
+        
+        f.write("="*80 + "\n")
+    
+    return txt_filename
 
 def main():
     parser = argparse.ArgumentParser()
@@ -168,6 +213,9 @@ def main():
     with open("results_comparison.json", "w") as f:
         json.dump(results_log, f, indent=4)
 
+    # Save summary txt file with config and metrics
+    txt_file = save_summary_txt(args, agg_metrics, configurations)
+
     # Print Summary Table
     print("\n" + "="*80)
     print(f"{'Method':<20} | {'Accuracy (%)':<15} | {'Avg Flicker':<15} | {'Avg Time (s)':<15}")
@@ -183,6 +231,7 @@ def main():
              print(f"{cfg_name:<20} | {'N/A':<15} | {'N/A':<15} | {'N/A':<15}")
     print("="*80)
     print(f"Detailed results saved to results_comparison.json")
+    print(f"Summary saved to {txt_file}")
 
 if __name__ == "__main__":
     main()
