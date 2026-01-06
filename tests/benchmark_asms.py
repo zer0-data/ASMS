@@ -69,6 +69,7 @@ def save_summary_txt(args, agg_metrics, configurations):
             f.write(f"  - Lambda (Momentum Weight): {args.lam}\n")
             f.write(f"  - H_Peak (Flicker Zone): {args.h_peak}\n")
             f.write(f"  - Tau (Breakout Threshold): {args.tau}\n")
+            f.write(f"  - Semantic: {not args.no_semantic}\n")
         elif args.mode == "asms_elastic":
             f.write(f"  - Beta (Momentum Decay): {args.beta}\n")
             f.write(f"  - Lambda (Momentum Weight): {args.lam}\n")
@@ -76,6 +77,7 @@ def save_summary_txt(args, agg_metrics, configurations):
             f.write(f"  - Tau (Breakout Threshold): {args.tau}\n")
             f.write(f"  - Beta_Up (Rising Coef): {args.beta_up}\n")
             f.write(f"  - Lambda_Down (Falling Coef): {args.lambda_down}\n")
+            f.write(f"  - Semantic: {not args.no_semantic}\n")
         f.write("\n")
         
         # Results Summary
@@ -107,6 +109,8 @@ def main():
     # Elastic mode hyperparameters
     parser.add_argument("--beta_up", type=float, default=0.9, help="Momentum coefficient when confidence is rising")
     parser.add_argument("--lambda_down", type=float, default=1.5, help="Momentum coefficient when confidence is falling")
+    # Kinetic-only mode (no semantics)
+    parser.add_argument("--no_semantic", action="store_true", help="Disable semantic similarity (kinetic-only mode)")
     parser.add_argument("--name", type=str, default="experiment")
     args = parser.parse_args()
 
@@ -141,6 +145,7 @@ def main():
         current_params["lambda_mom"] = args.lam
         current_params["h_peak"] = args.h_peak
         current_params["breakout_thresh"] = args.tau
+        current_params["semantic"] = not args.no_semantic
     elif args.mode == "asms_elastic":
         current_params["asms"] = True
         current_params["elastic"] = True
@@ -150,6 +155,7 @@ def main():
         current_params["breakout_thresh"] = args.tau
         current_params["beta_up"] = args.beta_up
         current_params["lambda_down"] = args.lambda_down
+        current_params["semantic"] = not args.no_semantic
 
     configurations = [{"name": args.name, "params": current_params}]
 

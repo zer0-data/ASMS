@@ -60,4 +60,39 @@ python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.05 --tau 0.
 python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.2 --tau 0.85 --name "ASMS_Entropy_0.2"
 python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.3 --tau 0.85 --name "ASMS_Entropy_0.3"
 
+
+# --- SET 6: ELASTIC MODE (Asymmetric Momentum) ---
+# Tests the "easy up, hard down" hypothesis.
+# beta_up controls rising confidence, lambda_down controls falling.
+# ------------------------
+echo "Running Elastic Mode Tests..."
+
+# Config A: Default Elastic (Balanced asymmetry)
+python benchmark_asms.py --mode asms_elastic --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --beta_up 0.9 --lambda_down 1.5 --name "Elastic_Default"
+
+# Config B: Aggressive Elastic (Harder punishment for drops)
+python benchmark_asms.py --mode asms_elastic --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --beta_up 0.9 --lambda_down 2.0 --name "Elastic_Aggressive"
+
+# Config C: Soft Elastic (Gentler asymmetry)
+python benchmark_asms.py --mode asms_elastic --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --beta_up 0.7 --lambda_down 1.2 --name "Elastic_Soft"
+
+# Config D: Extreme Elastic (Maximum stubbornness without RCR lock-in)
+python benchmark_asms.py --mode asms_elastic --beta 0.9 --lam 1.0 --h_peak 0.1 --tau 0.85 --beta_up 0.95 --lambda_down 2.5 --name "Elastic_Extreme"
+
+
+# --- SET 7: KINETIC-ONLY MODE (No Semantics) ---
+# Tests pure momentum trajectory without embedding cosine similarity.
+# Useful when embedding space is anisotropic (similarity ~0.9 for all pairs).
+# ------------------------
+echo "Running Kinetic-Only (No Semantics) Tests..."
+
+# Kinetic-Only ASMS (no embedding similarity)
+python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --no_semantic --name "Kinetic_Balanced"
+
+# Kinetic-Only Elastic (no embedding similarity + asymmetric momentum)
+python benchmark_asms.py --mode asms_elastic --beta 0.8 --lam 0.5 --beta_up 0.9 --lambda_down 1.5 --h_peak 0.1 --tau 0.85 --no_semantic --name "Kinetic_Elastic"
+
+# Kinetic-Only Aggressive (high lambda for harder correction)
+python benchmark_asms.py --mode asms --beta 0.9 --lam 1.5 --h_peak 0.1 --tau 0.85 --no_semantic --name "Kinetic_Aggressive"
+
 echo "All experiments completed."

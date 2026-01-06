@@ -31,12 +31,65 @@ def main():
         
         generated_text = tokenizer.batch_decode(out, skip_special_tokens=True)[0]
         print("-" * 50)
-        print("Generated Output:")
+        print("Generated Output (ASMS):")
         print(generated_text)
         print("-" * 50)
         print("ASMS Generation Successful.")
     except Exception as e:
-        print(f"Error during generation: {e}")
+        print(f"Error during ASMS generation: {e}")
+        import traceback
+        traceback.print_exc()
+    
+    # Test ASMS Elastic Mode
+    print(f"\nRunning ASMS Elastic Mode...")
+    try:
+        out, _, _, _ = sample(model, input_ids, mask_id=mask_id, steps=64, gen_length=128, block_length=32, 
+                                          asms=True, elastic=True, beta_up=0.9, lambda_down=1.5,
+                                          beta_base=0.8, h_peak=0.1, lambda_mom=0.5)
+        
+        generated_text = tokenizer.batch_decode(out, skip_special_tokens=True)[0]
+        print("-" * 50)
+        print("Generated Output (ASMS Elastic):")
+        print(generated_text)
+        print("-" * 50)
+        print("ASMS Elastic Generation Successful.")
+    except Exception as e:
+        print(f"Error during ASMS Elastic generation: {e}")
+        import traceback
+        traceback.print_exc()
+    
+    # Test ASMS Kinetic-Only (No Semantics)
+    print(f"\nRunning ASMS Kinetic-Only (No Semantics)...")
+    try:
+        out, _, _, _ = sample(model, input_ids, mask_id=mask_id, steps=64, gen_length=128, block_length=32, 
+                                          asms=True, semantic=False, beta_base=0.8, h_peak=0.1, lambda_mom=0.5)
+        
+        generated_text = tokenizer.batch_decode(out, skip_special_tokens=True)[0]
+        print("-" * 50)
+        print("Generated Output (ASMS Kinetic-Only):")
+        print(generated_text)
+        print("-" * 50)
+        print("ASMS Kinetic-Only Generation Successful.")
+    except Exception as e:
+        print(f"Error during ASMS Kinetic-Only generation: {e}")
+        import traceback
+        traceback.print_exc()
+    
+    # Test ASMS Elastic + No Semantics
+    print(f"\nRunning ASMS Elastic + Kinetic-Only...")
+    try:
+        out, _, _, _ = sample(model, input_ids, mask_id=mask_id, steps=64, gen_length=128, block_length=32, 
+                                          asms=True, elastic=True, semantic=False,
+                                          beta_up=0.9, lambda_down=1.5, beta_base=0.8, h_peak=0.1, lambda_mom=0.5)
+        
+        generated_text = tokenizer.batch_decode(out, skip_special_tokens=True)[0]
+        print("-" * 50)
+        print("Generated Output (ASMS Elastic + Kinetic-Only):")
+        print(generated_text)
+        print("-" * 50)
+        print("ASMS Elastic + Kinetic-Only Generation Successful.")
+    except Exception as e:
+        print(f"Error during ASMS Elastic + Kinetic-Only generation: {e}")
         import traceback
         traceback.print_exc()
 
