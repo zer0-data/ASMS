@@ -64,3 +64,39 @@ C_t + \lambda \cdot d_t & \text{otherwise}
 4.  **Update Momentum**: Using Gamma-Skewed $\beta_t$.
 5.  **Compute Remasking Score**: $S_t = C_t + \lambda d_t$.
 6.  **Mask**: Mask $N(t)$ tokens with lowest $S_t$.
+
+## 4. Elastic Mode: Asymmetric Momentum
+
+### 4.1. Motivation
+RCR (Running Confidence Remasking) is "stubborn"—it only allows confidence to rise via max-pooling. Standard ASMS is "symmetric"—momentum applies equally whether confidence is rising or falling.
+
+**Elastic Mode** bridges these: confidence can rise easily (like RCR) but is punished when falling (unlike RCR's lock-in).
+
+### 4.2. Asymmetric Momentum Update
+We decouple the momentum coefficient based on the direction of confidence change:
+
+$$d_t = \Delta C_t + \alpha(\Delta C_t) \cdot \beta_t \cdot \mathcal{S}_t \cdot d_{t-1}$$
+
+where the direction-dependent coefficient is:
+
+$$\alpha(\Delta C_t) = \begin{cases} 
+\beta_{up} & \text{if } \Delta C_t > 0 \text{ (rising)} \\
+\lambda_{down} & \text{if } \Delta C_t \leq 0 \text{ (falling)}
+\end{cases}$$
+
+### 4.3. Hyperparameters
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| $\beta_{up}$ | 0.9 | Momentum coefficient when confidence is rising. Higher = smoother upward trajectory. |
+| $\lambda_{down}$ | 1.5 | Momentum coefficient when confidence is falling. Higher = stronger resistance to drops. |
+
+### 4.4. Intuition
+*   **$\beta_{up} = 0.9$**: When confidence rises, we trust it and allow smooth accumulation.
+*   **$\lambda_{down} = 1.5$**: When confidence drops, we amplify the negative momentum, making it "expensive" to lose confidence. This prevents oscillation without the permanent lock-in of RCR.
+
+### 4.5. Comparison
+| Method | Rising Confidence | Falling Confidence | Failure Mode |
+|--------|-------------------|--------------------|--------------|
+| RCR | Locks in (max-pool) | Ignored | Stubbornness (hallucination lock-in) |
+| ASMS | $\beta_t$ | $\beta_t$ | Can oscillate if $\beta$ too low |
+| **ASMS Elastic** | $\beta_{up} \cdot \beta_t$ | $\lambda_{down} \cdot \beta_t$ | Balanced (easy up, hard down) |

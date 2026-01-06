@@ -6,6 +6,7 @@
 - **Semantic Hysteresis**: Distinguishes between refinement and instability using cosine similarity.
 - **Entropy-Gated Decay**: Dynamically adjusts momentum decay based on prediction uncertainty.
 - **Breakout Threshold**: Allows high-confidence corrections to bypass momentum inertia.
+- **Elastic Mode**: Asymmetric momentum that allows confidence to rise easily but resists drops.
 
 ## Installation
 ```bash
@@ -39,6 +40,18 @@ out, _, _, _ = sample(
     h_peak=0.1,     # Flicker Zone (Normalized Entropy)
     lambda_mom=0.5, # Momentum weight
     semantic=True   # Set False for "Kinetic-Only" mode (No Semantics)
+)
+
+# Run ASMS Elastic Mode (Asymmetric Momentum)
+out, _, _, _ = sample(
+    model, 
+    input_ids, 
+    mask_id=126336, 
+    steps=64, 
+    asms=True,       # Enable ASMS
+    elastic=True,    # Enable Elastic Mode
+    beta_up=0.9,     # Momentum coef when confidence rising (smooth)
+    lambda_down=1.5, # Momentum coef when confidence falling (punish)
 )
 
 print(tokenizer.batch_decode(out, skip_special_tokens=True)[0])

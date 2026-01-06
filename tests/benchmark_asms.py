@@ -69,6 +69,13 @@ def save_summary_txt(args, agg_metrics, configurations):
             f.write(f"  - Lambda (Momentum Weight): {args.lam}\n")
             f.write(f"  - H_Peak (Flicker Zone): {args.h_peak}\n")
             f.write(f"  - Tau (Breakout Threshold): {args.tau}\n")
+        elif args.mode == "asms_elastic":
+            f.write(f"  - Beta (Momentum Decay): {args.beta}\n")
+            f.write(f"  - Lambda (Momentum Weight): {args.lam}\n")
+            f.write(f"  - H_Peak (Flicker Zone): {args.h_peak}\n")
+            f.write(f"  - Tau (Breakout Threshold): {args.tau}\n")
+            f.write(f"  - Beta_Up (Rising Coef): {args.beta_up}\n")
+            f.write(f"  - Lambda_Down (Falling Coef): {args.lambda_down}\n")
         f.write("\n")
         
         # Results Summary
@@ -92,11 +99,14 @@ def save_summary_txt(args, agg_metrics, configurations):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", type=str, choices=["lcr", "rcr", "asms"], required=True)
+    parser.add_argument("--mode", type=str, choices=["lcr", "rcr", "asms", "asms_elastic"], required=True)
     parser.add_argument("--beta", type=float, default=0.8)
     parser.add_argument("--lam", type=float, default=0.5)
     parser.add_argument("--h_peak", type=float, default=0.1)
     parser.add_argument("--tau", type=float, default=0.85)
+    # Elastic mode hyperparameters
+    parser.add_argument("--beta_up", type=float, default=0.9, help="Momentum coefficient when confidence is rising")
+    parser.add_argument("--lambda_down", type=float, default=1.5, help="Momentum coefficient when confidence is falling")
     parser.add_argument("--name", type=str, default="experiment")
     args = parser.parse_args()
 
@@ -131,6 +141,15 @@ def main():
         current_params["lambda_mom"] = args.lam
         current_params["h_peak"] = args.h_peak
         current_params["breakout_thresh"] = args.tau
+    elif args.mode == "asms_elastic":
+        current_params["asms"] = True
+        current_params["elastic"] = True
+        current_params["beta_base"] = args.beta
+        current_params["lambda_mom"] = args.lam
+        current_params["h_peak"] = args.h_peak
+        current_params["breakout_thresh"] = args.tau
+        current_params["beta_up"] = args.beta_up
+        current_params["lambda_down"] = args.lambda_down
 
     configurations = [{"name": args.name, "params": current_params}]
 

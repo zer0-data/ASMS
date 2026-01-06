@@ -30,6 +30,8 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                  # ASMS arguments
                  asms=False, beta_base=0.8, h_peak=0.1, lambda_mom=0.5, sim_thresh=0.5, breakout_thresh=0.85,
                  semantic=True, # New argument for Kinetic-Only Mode
+                 # ASMS Elastic Mode (Asymmetric Momentum)
+                 elastic=False, beta_up=0.9, lambda_down=1.5,
                  # Optimization
                  return_intermediates=False):
     '''
@@ -158,7 +160,14 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                         
                         # Momentum Update
                         delta_C = confidence - prev_confidence
-                        momentum_updated = delta_C + beta_t * similarity * momentum_buffer
+                        
+                        # Elastic Mode: Asymmetric momentum (easy to rise, hard to fall)
+                        if elastic:
+                            # beta_up for rising confidence, lambda_down for falling
+                            momentum_coef = torch.where(delta_C > 0, beta_up, lambda_down)
+                            momentum_updated = delta_C + momentum_coef * beta_t * similarity * momentum_buffer
+                        else:
+                            momentum_updated = delta_C + beta_t * similarity * momentum_buffer
                     
                     # Update State (Always happens)
                     momentum_buffer = momentum_updated.clone()
