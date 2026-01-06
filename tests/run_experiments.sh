@@ -10,8 +10,8 @@ echo "Starting ASMS Benchmark Suite..."
 # The standard we must beat. RCR is the current SOTA for reasoning.
 # ------------------------
 echo "Running Baselines..."
-python benchmark_asms.py --mode lcr --name "Baseline_LCR"
-python benchmark_asms.py --mode rcr --name "Baseline_RCR"
+python tests/benchmark_asms.py --mode lcr --name "Baseline_LCR"
+python tests/benchmark_asms.py --mode rcr --name "Baseline_RCR"
 
 
 # --- SET 2: THE GOLDEN ZONE (Core Hypothesis) ---
@@ -22,11 +22,11 @@ python benchmark_asms.py --mode rcr --name "Baseline_RCR"
 echo "Running Golden Zone (Stability Tests)..."
 
 # Config A: Balanced (The Default)
-python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --name "ASMS_Golden_Balanced"
+python tests/benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --name "ASMS_Golden_Balanced"
 
 # Config B: Agile Corrector (Lower momentum mass, harder correction kick)
 # Use this if the model is too "sluggish" to fix errors.
-python benchmark_asms.py --mode asms --beta 0.6 --lam 1.0 --h_peak 0.1 --tau 0.85 --name "ASMS_Golden_Agile"
+python tests/benchmark_asms.py --mode asms --beta 0.6 --lam 1.0 --h_peak 0.1 --tau 0.85 --name "ASMS_Golden_Agile"
 
 
 # --- SET 3: STRESS TEST (Aggressive) ---
@@ -36,7 +36,7 @@ python benchmark_asms.py --mode asms --beta 0.6 --lam 1.0 --h_peak 0.1 --tau 0.8
 # ------------------------
 echo "Running Stress Tests..."
 
-python benchmark_asms.py --mode asms --beta 0.9 --lam 1.5 --h_peak 0.1 --tau 0.85 --name "ASMS_Stress_Heavy"
+python tests/benchmark_asms.py --mode asms --beta 0.9 --lam 1.5 --h_peak 0.1 --tau 0.85 --name "ASMS_Stress_Heavy"
 
 
 # --- SET 4: ABLATION (Sensitivity) ---
@@ -45,7 +45,7 @@ python benchmark_asms.py --mode asms --beta 0.9 --lam 1.5 --h_peak 0.1 --tau 0.8
 # ------------------------
 echo "Running Ablation..."
 
-python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.3 --tau 0.85 --name "ASMS_Ablation_HighEntropy"
+python tests/benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.3 --tau 0.85 --name "ASMS_Ablation_HighEntropy"
 
 
 # --- SET 5: MANEUVER B (Entropy Alignment Sweep) ---
@@ -56,9 +56,9 @@ python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.3 --tau 0.8
 # ------------------------
 echo "Running Maneuver B (Entropy Sweep)..."
 
-python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.05 --tau 0.85 --name "ASMS_Entropy_0.05"
-python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.2 --tau 0.85 --name "ASMS_Entropy_0.2"
-python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.3 --tau 0.85 --name "ASMS_Entropy_0.3"
+python tests/benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.05 --tau 0.85 --name "ASMS_Entropy_0.05"
+python tests/benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.2 --tau 0.85 --name "ASMS_Entropy_0.2"
+python tests/benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.3 --tau 0.85 --name "ASMS_Entropy_0.3"
 
 
 # --- SET 6: ELASTIC MODE (Asymmetric Momentum) ---
@@ -68,16 +68,16 @@ python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.3 --tau 0.8
 echo "Running Elastic Mode Tests..."
 
 # Config A: Default Elastic (Balanced asymmetry)
-python benchmark_asms.py --mode asms_elastic --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --beta_up 0.9 --lambda_down 1.5 --name "Elastic_Default"
+python tests/benchmark_asms.py --mode asms_elastic --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --beta_up 0.9 --lambda_down 1.5 --name "Elastic_Default"
 
 # Config B: Aggressive Elastic (Harder punishment for drops)
-python benchmark_asms.py --mode asms_elastic --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --beta_up 0.9 --lambda_down 2.0 --name "Elastic_Aggressive"
+python tests/benchmark_asms.py --mode asms_elastic --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --beta_up 0.9 --lambda_down 2.0 --name "Elastic_Aggressive"
 
 # Config C: Soft Elastic (Gentler asymmetry)
-python benchmark_asms.py --mode asms_elastic --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --beta_up 0.7 --lambda_down 1.2 --name "Elastic_Soft"
+python tests/benchmark_asms.py --mode asms_elastic --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --beta_up 0.7 --lambda_down 1.2 --name "Elastic_Soft"
 
 # Config D: Extreme Elastic (Maximum stubbornness without RCR lock-in)
-python benchmark_asms.py --mode asms_elastic --beta 0.9 --lam 1.0 --h_peak 0.1 --tau 0.85 --beta_up 0.95 --lambda_down 2.5 --name "Elastic_Extreme"
+python testsbenchmark_asms.py --mode asms_elastic --beta 0.9 --lam 1.0 --h_peak 0.1 --tau 0.85 --beta_up 0.95 --lambda_down 2.5 --name "Elastic_Extreme"
 
 
 # --- SET 7: KINETIC-ONLY MODE (No Semantics) ---
@@ -87,12 +87,12 @@ python benchmark_asms.py --mode asms_elastic --beta 0.9 --lam 1.0 --h_peak 0.1 -
 echo "Running Kinetic-Only (No Semantics) Tests..."
 
 # Kinetic-Only ASMS (no embedding similarity)
-python benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --no_semantic --name "Kinetic_Balanced"
+python tests/benchmark_asms.py --mode asms --beta 0.8 --lam 0.5 --h_peak 0.1 --tau 0.85 --no_semantic --name "Kinetic_Balanced"
 
 # Kinetic-Only Elastic (no embedding similarity + asymmetric momentum)
-python benchmark_asms.py --mode asms_elastic --beta 0.8 --lam 0.5 --beta_up 0.9 --lambda_down 1.5 --h_peak 0.1 --tau 0.85 --no_semantic --name "Kinetic_Elastic"
+python tests/benchmark_asms.py --mode asms_elastic --beta 0.8 --lam 0.5 --beta_up 0.9 --lambda_down 1.5 --h_peak 0.1 --tau 0.85 --no_semantic --name "Kinetic_Elastic"
 
 # Kinetic-Only Aggressive (high lambda for harder correction)
-python benchmark_asms.py --mode asms --beta 0.9 --lam 1.5 --h_peak 0.1 --tau 0.85 --no_semantic --name "Kinetic_Aggressive"
+python tests/benchmark_asms.py --mode asms --beta 0.9 --lam 1.5 --h_peak 0.1 --tau 0.85 --no_semantic --name "Kinetic_Aggressive"
 
 echo "All experiments completed."

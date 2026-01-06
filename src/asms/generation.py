@@ -201,10 +201,13 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                     confidence = torch.sum(p * log_p, dim=-1)
                 elif conf_alg == "topk_margin":
                     sorted_probs, _ = torch.sort(p, dim=-1, descending=True)
-                    # Extract top1 and top2 probabilities
-                    top1_probs = sorted_probs[:, :, 0]
-                    top2_probs = sorted_probs[:, :, 1]
-                    # Calculate confidence as top1 - top2
+                    # Robustly extract top1 and top2 for any tensor shape
+                    if sorted_probs.ndim == 1:
+                        top1_probs = sorted_probs[0]
+                        top2_probs = sorted_probs[1]
+                    else:
+                        top1_probs = sorted_probs[..., 0]
+                        top2_probs = sorted_probs[..., 1]
                     confidence = top1_probs - top2_probs
                 
                 # Ensure we don't process tokens beyond the current block

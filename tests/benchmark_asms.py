@@ -16,6 +16,10 @@ def extract_answer(text):
     """
     if "####" in text:
         return text.split("####")[1].strip().replace(",", "")
+    # Fallback: extract last number in text
+    numbers = re.findall(r"[-+]?[0-9]*\.?[0-9]+", text)
+    if numbers:
+        return numbers[-1]
     return ""
 
 def calculate_flicker(intermediate_results, check_last_n=16):
@@ -173,8 +177,8 @@ def main():
         question = example["question"]
         ground_truth = extract_answer(example["answer"])
         
-        # Prepare Prompt
-        messages = [{"role": "user", "content": question}]
+        # Prepare Prompt with GSM8K answer format instruction
+        messages = [{"role": "user", "content": question + "\nPlease answer step by step and finish your answer with '#### <final answer>' on the last line."}]
         prompt_str = tokenizer.apply_chat_template(messages, add_generation_prompt=True, tokenize=False)
         input_ids = tokenizer(prompt_str, return_tensors="pt").input_ids.to(device)
         
