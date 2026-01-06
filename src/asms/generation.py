@@ -76,6 +76,7 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
             # Gamma calculation for peak at h_peak
             # Peak of x^gamma * (1-x) is at gamma / (gamma + 1)
             # h_peak = gamma / (gamma + 1) => gamma = h_peak / (1 - h_peak)
+            h_peak = min(h_peak, 0.99)  # Safety clamp to avoid division by zero
             gamma = h_peak / (1 - h_peak)
             # Z normalization factor to make peak amplitude 1.0
             # max_val = h_peak^gamma * (1 - h_peak)
@@ -147,7 +148,8 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                         
                         # Gamma-Skewed Entropy-Gated Decay
                         # Use precomputed log_p for stability
-                        entropy = -torch.sum(p * log_p, dim=-1) # (B, L)
+                        # Avoid NaNs: mask out p near zero before multiplying by log_p
+                        entropy = -torch.sum(torch.where(p > 1e-8, p * log_p, torch.zeros_like(p)), dim=-1) # (B, L)
                         # max_entropy precomputed outside loop
                         norm_entropy = entropy / max_entropy # (B, L)
                         
@@ -163,16 +165,21 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                         
                         # Elastic Mode: Asymmetric momentum (easy to rise, hard to fall)
                         if elastic:
-                            # beta_up for rising confidence, lambda_down for falling
-                            momentum_coef = torch.where(delta_C > 0, beta_up, lambda_down)
-                            momentum_updated = delta_C + momentum_coef * beta_t * similarity * momentum_buffer
+                            # When confidence is RISING (delta_C > 0): Use beta_up (0.9) to keep momentum stable
+                            # When confidence is FALLING (delta_C < 0): Use lambda_down (1.5) to punish harder
+                            # The key insight: we scale the DELTA, not just the buffer
+                            # Rising: momentum carries forward smoothly
+                            # Falling: negative delta is amplified, making score drop faster
+                            delta_scale = torch.where(delta_C > 0, torch.ones_like(delta_C), lambda_down)
+                            buffer_scale = torch.where(delta_C > 0, beta_up, beta_up * 0.5)  # Dampen buffer on drops
+                            momentum_updated = delta_scale * delta_C + buffer_scale * beta_t * similarity * momentum_buffer
                         else:
                             momentum_updated = delta_C + beta_t * similarity * momentum_buffer
                     
                     # Update State (Always happens)
                     momentum_buffer = momentum_updated.clone()
-                    prev_confidence = confidence.clone()
-                    prev_confidence = confidence.clone()
+                    # Store the RAW confidence (before any boosting/masking) for next step's delta_C
+                    prev_confidence = confidence.clone()  # confidence here is still raw
                     if semantic:
                         # Store normalized embeddings for next step's similarity calculation
                         prev_x0_embeddings = current_embeddings_norm.clone()
@@ -184,9 +191,8 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                         final_score = torch.where(confidence > breakout_thresh, confidence, score)
                         # Use final_score as confidence for masking selection
                         confidence = final_score
-                    
-                    # Use final_score as confidence for masking selection
-                    confidence = final_score
+                    else:
+                        final_score = confidence
 
                 if not rcr and return_intermediates:
                     intermediate_confidence.append(confidence.clone().cpu()[:, -gen_length:])

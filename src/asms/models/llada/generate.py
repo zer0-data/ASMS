@@ -78,8 +78,8 @@ def generate(model, prompt, steps=64, gen_length=128, block_length=32, temperatu
     '''
     Optimized version of the generate function.
     '''
-    # Use mixed precision for faster computation
-    with torch.cuda.amp.autocast(enabled=True):
+    # Use mixed precision for faster computation (standardized syntax)
+    with torch.amp.autocast("cuda", enabled=True):
         x = torch.full((1, prompt.shape[1] + gen_length), mask_id, dtype=torch.long, device=prompt.device)
         x[:, :prompt.shape[1]] = prompt.clone()
 
