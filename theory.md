@@ -15,7 +15,9 @@ Standard momentum in continuous space ($v_t = \gamma v_{t-1} + \eta \nabla$) fai
 $$\mathcal{S}_t = \text{CosSim}(\mathbf{E}(x_t), \mathbf{E}(x_{t-1}))$$
 
 The Momentum Update Rule becomes:
+
 $$d_t = \Delta C_t + \beta \cdot \mathcal{S}_t \cdot d_{t-1}$$
+
 where $\Delta C_t = C_t - C_{t-1}$.
 
 ### 2.1.1. Kinetic-Only Ablation ("Efficiency Mode")
