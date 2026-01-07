@@ -80,7 +80,13 @@ def get_num_transfer_tokens_maskgit(mask_index, steps, mode="linear"):
 @torch.no_grad()
 def generate_lcr(model, input_ids, mask_id, steps=64, gen_length=128, block_length=32):
     """
-    Baseline LCR (MaskGit) generation
+    Baseline LCR (MaskGit) generation.
+    Correct Logic:
+    1. Pass input to model.
+    2. Predict all tokens x0.
+    3. Fill masks with predictions.
+    4. Calculate confidence of the FILLED tokens (x).
+    5. Mask the tokens with lowest confidence.
     """
     x = torch.full((1, input_ids.shape[1] + gen_length), mask_id, dtype=torch.long, device=input_ids.device)
     x[:, :input_ids.shape[1]] = input_ids.clone()
@@ -95,42 +101,65 @@ def generate_lcr(model, input_ids, mask_id, steps=64, gen_length=128, block_leng
         start_idx = prompt_len + num_block * block_length
         end_idx = prompt_len + (num_block + 1) * block_length
         
-        # Initial mask for this block
-        block_mask_index = (x[:, start_idx:end_idx] == mask_id)
-        num_transfer_tokens = get_num_transfer_tokens_maskgit(block_mask_index, steps_per_block)
-        
         for i in range(steps_per_block):
             mask_index = (x == mask_id)
             
             logits = model(x).logits
-            confidence = F.softmax(logits, dim=-1)
-            x0 = torch.argmax(confidence, dim=-1)
+            probs = F.softmax(logits, dim=-1)
+            x0 = torch.argmax(probs, dim=-1)
             
-            # Capture what the model thinks the FULL sequence is right now
-            current_full_pred = torch.where(mask_index, x0, x)
-            intermediates.append(current_full_pred.clone())
-            
-            x0_confidence, _ = torch.max(confidence, dim=-1)
-            current_confidence = torch.where(mask_index, x0_confidence, torch.tensor(-1.0, device=x.device))
-            
+            # 1. Update belief: Fill masked tokens with current best guess
+            curr_block_mask = (x[:, start_idx:end_idx] == mask_id)
             for j in range(x.shape[0]):
-                k = num_transfer_tokens[j, i].item()
-                if k > 0:
-                    block_conf = current_confidence[j, start_idx:end_idx]
-                    k = min(k, (x[j, start_idx:end_idx] == mask_id).sum().item())
-                    
-                    if k > 0:
-                        _, topk_indices = torch.topk(block_conf, k=k)
-                        global_indices = topk_indices + start_idx
-                        x[j, global_indices] = x0[j, global_indices]
-                        
+                block_indices = torch.where(curr_block_mask[j])[0] + start_idx
+                x[j, block_indices] = x0[j, block_indices]
+            
+            # Capture intermediate state
+            intermediates.append(x.clone())
+            
+            # 2. Schedule
+            progress = (i + 1) / steps_per_block
+            r = progress
+            mask_ratio = np.cos(r * np.pi / 2) 
+            mask_ratio = np.clip(mask_ratio, 0, 1)
+            
+            block_size = end_idx - start_idx
+            num_to_mask = int(block_size * mask_ratio)
+            
+            if i == steps_per_block - 1:
+                num_to_mask = 0
+            
+            # 3. Re-masking
+            # CRITICAL FIX: Calculate confidence of the ACTUAL tokens in x
+            # We want P(x_token | masked_input)
+            # x now contains mixed content: old tokens + new x0 fills
+            # We must evaluate if the old tokens are still supported by the model
+            
+            x_confidence = torch.gather(probs, -1, x.unsqueeze(-1)).squeeze(-1)
+            scores = x_confidence[:, start_idx:end_idx] # (B, block_len)
+            
+            if num_to_mask > 0:
+                # Mask the 'num_to_mask' tokens with LOWEST confidence
+                _, indices = torch.topk(scores, k=num_to_mask, largest=False, dim=-1)
+                
+                for j in range(x.shape[0]):
+                    mask_pos = indices[j] + start_idx
+                    x[j, mask_pos] = mask_id
+            
     flicker = calculate_flicker(intermediates)
     return x, flicker
 
 @torch.no_grad()
 def generate_rcr(model, input_ids, mask_id, steps=64, gen_length=128, block_length=32):
     """
-    Baseline RCR (Recursive Consistency) generation
+    Baseline RCR (Recursive Consistency) generation.
+    Correct Logic:
+    1. Maintain overtime_confidence (Running Max).
+    2. At each step, predict x0.
+    3. Fill masks.
+    4. Calculate confidence of FILLED tokens (x).
+    5. Update history: overtime_confidence = max(overtime_confidence, x_confidence).
+    6. Re-mask based on schedule using the RUNNING MAX confidence.
     """
     x = torch.full((1, input_ids.shape[1] + gen_length), mask_id, dtype=torch.long, device=input_ids.device)
     x[:, :input_ids.shape[1]] = input_ids.clone()
@@ -146,40 +175,49 @@ def generate_rcr(model, input_ids, mask_id, steps=64, gen_length=128, block_leng
         start_idx = prompt_len + num_block * block_length
         end_idx = prompt_len + (num_block + 1) * block_length
         
-        block_mask_index = (x[:, start_idx:end_idx] == mask_id)
-        num_transfer_tokens = get_num_transfer_tokens_maskgit(block_mask_index, steps_per_block)
-        
         for i in range(steps_per_block):
             mask_index = (x == mask_id)
             
             logits = model(x).logits
-            confidence = F.softmax(logits, dim=-1)
-            x0 = torch.argmax(confidence, dim=-1)
-            x0_confidence, _ = torch.max(confidence, dim=-1)
+            probs = F.softmax(logits, dim=-1)
+            x0 = torch.argmax(probs, dim=-1)
             
-            # Capture full prediction before we enact schedule
-            current_full_pred = torch.where(mask_index, x0, x)
-            intermediates.append(current_full_pred.clone())
-            
+            # Fill current block completely with new predictions
             curr_block_mask = (x[:, start_idx:end_idx] == mask_id)
-            
-            # 1. Fill everything in block
             for j in range(x.shape[0]):
                 block_indices = torch.where(curr_block_mask[j])[0] + start_idx
                 x[j, block_indices] = x0[j, block_indices]
-                overtime_confidence[j, block_indices] = x0_confidence[j, block_indices]
                 
-                # 2. Mask out lowest confidence to meet schedule
-                # Target revealed count = sum of num_transfer_tokens up to this step
-                target_revealed_count = num_transfer_tokens[j, :i+1].sum().item()
+            intermediates.append(x.clone())
+            
+            # CRITICAL FIX: Update Running Max Confidence using ACTUAL token confidence
+            x_confidence = torch.gather(probs, -1, x.unsqueeze(-1)).squeeze(-1)
+            current_conf_block = x_confidence[:, start_idx:end_idx]
+            
+            overtime_confidence[:, start_idx:end_idx] = torch.maximum(
+                overtime_confidence[:, start_idx:end_idx], 
+                current_conf_block.float()
+            )
+            
+            # Schedule
+            progress = (i + 1) / steps_per_block
+            r = progress
+            mask_ratio = np.cos(r * np.pi / 2) 
+            mask_ratio = np.clip(mask_ratio, 0, 1)
+            block_size = end_idx - start_idx
+            num_to_mask = int(block_size * mask_ratio)
+            
+            if i == steps_per_block - 1:
+                num_to_mask = 0
                 
-                block_conf = overtime_confidence[j, start_idx:end_idx]
-                
-                if target_revealed_count < (end_idx - start_idx):
-                    num_to_mask = (end_idx - start_idx) - target_revealed_count
-                    _, low_conf_indices = torch.topk(block_conf, k=num_to_mask, largest=False)
-                    global_mask_indices = low_conf_indices + start_idx
-                    x[j, global_mask_indices] = mask_id
+            # Re-mask using RUNNING MAX confidence
+            scores = overtime_confidence[:, start_idx:end_idx]
+            
+            if num_to_mask > 0:
+                _, indices = torch.topk(scores, k=num_to_mask, largest=False, dim=-1)
+                for j in range(x.shape[0]):
+                    mask_pos = indices[j] + start_idx
+                    x[j, mask_pos] = mask_id
 
     flicker = calculate_flicker(intermediates)
     return x, flicker
