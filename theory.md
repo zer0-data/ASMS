@@ -4,7 +4,7 @@
 Discrete Diffusion Models (DDMs) like LLaDA generate text by iteratively refining a sequence. Two opposing failure modes plague standard sampling strategies:
 
 1.  **Temporal Oscillation (Flickering):** The model wavers between valid candidates (e.g., "happy" vs. "glad") across steps. Standard Low-Confidence Remasking (LCR) fails to dampen this because it is memoryless.
-2.  **Stubbornness (Hallucination Lock-in):** Running Confidence Remasking (RCR) solves flickering by taking the maximum historical confidence ($S_t = \max(C_t, S_{t-1})$). However, this creates "Stubbornness"—if the model hallucinates with high confidence early on, RCR ignores subsequent drops in confidence, locking in the error.
+2.  **Stubbornness (Hallucination Lock-in):** Running Confidence Remasking (RCR) solves flickering by taking the maximum historical confidence, $S_t = \max(C_t, S_{t-1})$. However, this creates "Stubbornness"—if the model hallucinates with high confidence early on, RCR ignores subsequent drops in confidence, locking in the error.
 
 ## 2. Solution: ASMS Control Loop
 ASMS treats the sampling process as a **Kinetic Control Problem**. We apply momentum to the confidence trajectory, modulated by semantic stability and entropy, to achieve "Elastic Stability"—resisting noise while yielding to strong negative evidence.
@@ -22,7 +22,6 @@ where $\Delta C_t = C_t - C_{t-1}$.
 
 ### 2.1.1. Kinetic-Only Ablation ("Efficiency Mode")
 If embedding computation is too costly, or if the embedding space is anisotropic, we can disable semantic gating ($\mathcal{S}_t = 1$).
-* **Performance Note:** Experiments show this achieves parity with Semantic mode in balanced configurations (74% accuracy) but is fragile under asymmetric pressure (Elastic Mode), dropping to 72% accuracy due to the lack of semantic protection for valid synonyms.
 
 ### 2.2. Gamma-Skewed Entropy Decay (Refined Anti-Stubbornness)
 Oscillation typically occurs at **low normalized entropy** (binary conflicts, $\bar{H} \approx 0.1$). High entropy indicates broad confusion where momentum should be disabled. We define the decay factor $\beta_t$ using a skewed Beta-like distribution:
