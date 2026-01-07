@@ -15,8 +15,10 @@ def extract_answer(text):
     Extracts the answer after '####' in the text.
     """
     if "####" in text:
-        return text.split("####")[1].strip().replace(",", "")
-    # Fallback: extract last number in text
+        text = text.split("####")[1]
+    
+    # Clean and extract last number
+    text = text.strip().replace(",", "")
     numbers = re.findall(r"[-+]?[0-9]*\.?[0-9]+", text)
     if numbers:
         return numbers[-1]
