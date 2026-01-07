@@ -1,102 +1,73 @@
 # Adaptive Semantic-Momentum Sampling (ASMS): Theoretical Formulation
 
-## 1. Problem Statement: Temporal Oscillation
-Discrete Diffusion Models (DDMs) like LLaDA generate text by iteratively refining a sequence of tokens from a masked state. A common failure mode is **Temporal Oscillation** (flickering), where the model wavers between two or more valid candidates across steps.
+## 1. Problem Statement: Temporal Oscillation & Hallucination Lock-in
+Discrete Diffusion Models (DDMs) like LLaDA generate text by iteratively refining a sequence. Two opposing failure modes plague standard sampling strategies:
 
-Let $x_t^{(i)}$ be the token at position $i$ at step $t$. Oscillation occurs when:
-$$x_t^{(i)} \neq x_{t-1}^{(i)} \neq x_{t-2}^{(i)}$$
-
-Standard Low-Confidence Remasking (LCR) fails to dampen this because it is memoryless. Running Confidence Remasking (RCR) addresses this by taking the maximum historical confidence:
-$$S_t^{(i)} = \max(C_t^{(i)}, S_{t-1}^{(i)})$$
-However, RCR suffers from "Stubbornness"—once a high confidence is observed, it locks in, even if the token is wrong (hallucination).
+1.  **Temporal Oscillation (Flickering):** The model wavers between valid candidates (e.g., "happy" vs. "glad") across steps. Standard Low-Confidence Remasking (LCR) fails to dampen this because it is memoryless.
+2.  **Stubbornness (Hallucination Lock-in):** Running Confidence Remasking (RCR) solves flickering by taking the maximum historical confidence ($S_t = \max(C_t, S_{t-1})$). However, this creates "Stubbornness"—if the model hallucinates with high confidence early on, RCR ignores subsequent drops in confidence, locking in the error.
 
 ## 2. Solution: ASMS Control Loop
-ASMS treats the sampling process as a **Kinetic Control Problem**. Instead of max-pooling, we apply momentum to the confidence trajectory, modulated by semantic stability and entropy.
+ASMS treats the sampling process as a **Kinetic Control Problem**. We apply momentum to the confidence trajectory, modulated by semantic stability and entropy, to achieve "Elastic Stability"—resisting noise while yielding to strong negative evidence.
 
 ### 2.1. Semantic Hysteresis (The "Soft Reset")
-Standard momentum in continuous space: $v_t = \gamma v_{t-1} + \eta \nabla$.
-In discrete space, "velocity" is ill-defined because token identities change discontinuously. We define "Semantic Consistency" $\mathcal{S}$ as the cosine similarity between the embeddings of consecutive tokens:
+Standard momentum in continuous space ($v_t = \gamma v_{t-1} + \eta \nabla$) fails in discrete text because token identities change discontinuously. We define "Semantic Consistency" $\mathcal{S}$ as the cosine similarity between the embeddings of consecutive tokens:
 
 $$\mathcal{S}_t = \text{CosSim}(\mathbf{E}(x_t), \mathbf{E}(x_{t-1}))$$
 
-where $\mathbf{E}(\cdot)$ is the embedding function.
-
 The Momentum Update Rule becomes:
-$$d_t = (C_t - C_{t-1}) + \beta \cdot \mathcal{S}_t \cdot d_{t-1}$$
+$$d_t = \Delta C_t + \beta \cdot \mathcal{S}_t \cdot d_{t-1}$$
+where $\Delta C_t = C_t - C_{t-1}$.
 
-### 2.1.1. Kinetic-Only Ablation ("No Semantics")
-Anisotropy in LLM embedding spaces can weaken the signal-to-noise ratio of Cosine Similarity ($\mathcal{S}_t$). If $\mathcal{S}_t \approx 0.9$ for all token pairs, it acts merely as a constant damping factor rather than a semantic gate.
-
-The **Kinetic-Only** mode ($\mathcal{S}_t = 1$) isolates the pure momentum trajectory:
-$$d_t = (C_t - C_{t-1}) + \beta_t \cdot d_{t-1}$$
-
-If oscillation is driven primarily by confidence instability rather than semantic drift, this mode may improve performance and speed by bypassing embedding lookups.
+### 2.1.1. Kinetic-Only Ablation ("Efficiency Mode")
+If embedding computation is too costly, or if the embedding space is anisotropic, we can disable semantic gating ($\mathcal{S}_t = 1$).
+* **Performance Note:** Experiments show this achieves parity with Semantic mode in balanced configurations (74% accuracy) but is fragile under asymmetric pressure (Elastic Mode), dropping to 72% accuracy due to the lack of semantic protection for valid synonyms.
 
 ### 2.2. Gamma-Skewed Entropy Decay (Refined Anti-Stubbornness)
-To precisely target "Temporal Oscillation" without locking in confident errors, we use a skewed momentum schedule. Oscillation typically occurs at **low normalized entropy** (binary/ternary conflicts, $\bar{H} \approx 0.1$), whereas high entropy indicates broad confusion.
-
-We define the decay factor $\beta_t$ using a skewed Beta-like distribution:
+Oscillation typically occurs at **low normalized entropy** (binary conflicts, $\bar{H} \approx 0.1$). High entropy indicates broad confusion where momentum should be disabled. We define the decay factor $\beta_t$ using a skewed Beta-like distribution:
 
 $$\beta_t = Z \cdot \beta_{base} \cdot \bar{H}^\gamma \cdot (1 - \bar{H})$$
 
 Using $H_{peak} \approx 0.1$ as the "Flicker Zone":
-$$\gamma = \frac{H_{peak}}{1 - H_{peak}} \approx 0.11$$
-$$Z = \frac{1}{H_{peak}^\gamma (1 - H_{peak})} \approx 1.41$$
+$$\gamma \approx 0.11, \quad Z \approx 1.41$$
 
-*   **Logic**:
-    *   **Zero Entropy ($\bar{H} \to 0$)**: $\beta \to 0$. Confident hallucinations are not stabilized.
-    *   **Flicker Zone ($\bar{H} \approx 0.1$)**: $\beta \to \beta_{base}$. Max stability for synonyms.
-    *   **High Entropy ($\bar{H} \to 1$)**: $\beta \to 0$. No momentum for confusion.
+## 3. Elastic Mode: Active Punishment
+*This section has been updated to reflect the "Active Punishment" implementation.*
 
-### 2.3. Breakout Threshold (Trust Region)
-If the model is overwhelmingly confident ($C_t > \tau$), we trust the current prediction absolutely, ignoring momentum. This acts as a "Trust Region" optimization.
+### 3.1. Motivation
+Standard momentum applies equal inertia whether confidence is rising or falling. RCR applies infinite inertia (max-pooling) only when rising. **Elastic Mode** bridges these by actively punishing drops in confidence.
 
-Final Score Formulation:
-$$S_t = \begin{cases} 
-C_t & \text{if } C_t > \tau \\
-C_t + \lambda \cdot d_t & \text{otherwise}
-\end{cases}$$
+### 3.2. Asymmetric Active Momentum
+Instead of just decaying the history, we asymmetrically scale the **current change** ($\Delta C_t$). This creates an "Active Punishment" mechanism:
 
-## 3. Summary of Algorithm
-1.  **Compute Raw Confidence**: $C_t = P(x_t | x_t^{masked})$.
-2.  **Compute Entropy**: $\bar{H}_t$.
-3.  **Compute Similarity**: $\mathcal{S}$.
-4.  **Update Momentum**: Using Gamma-Skewed $\beta_t$.
-5.  **Compute Remasking Score**: $S_t = C_t + \lambda d_t$.
-6.  **Mask**: Mask $N(t)$ tokens with lowest $S_t$.
+$$d_t = \mathbf{\alpha(\Delta C_t)} \cdot \Delta C_t + \mathbf{\kappa(\Delta C_t)} \cdot \beta_t \cdot \mathcal{S}_t \cdot d_{t-1}$$
 
-## 4. Elastic Mode: Asymmetric Momentum
+Where the coefficients depend on the direction of change:
 
-### 4.1. Motivation
-RCR (Running Confidence Remasking) is "stubborn"—it only allows confidence to rise via max-pooling. Standard ASMS is "symmetric"—momentum applies equally whether confidence is rising or falling.
+| Condition | $\Delta C_t > 0$ (Rising) | $\Delta C_t \leq 0$ (Falling) |
+| :--- | :--- | :--- |
+| **Input Scale** $\alpha$ | $1.0$ (Trust the rise) | $\lambda_{down} \approx 2.5$ (Amplify the drop) |
+| **Buffer Scale** $\kappa$ | $\beta_{up} \approx 0.95$ (Keep history) | $0.5 \cdot \beta_{up}$ (Dampen history) |
 
-**Elastic Mode** bridges these: confidence can rise easily (like RCR) but is punished when falling (unlike RCR's lock-in).
+### 3.3. The "Penalty Box" Effect
+By setting $\lambda_{down} \gg 1$ (e.g., 2.5), a small drop in raw confidence (e.g., -0.1) becomes a massive drop in the momentum score (-0.25).
+* **Result:** The token's score tanks, pushing it to the bottom of the sorting queue.
+* **Benefit:** This solves RCR's stubbornness. If the model doubts a token even slightly, Elastic Mode flushes it out immediately, preventing lock-in.
 
-### 4.2. Asymmetric Momentum Update
-We decouple the momentum coefficient based on the direction of confidence change:
+## 4. Implementation Strategy: Precision Monotonicity
+While standard diffusion (MaskGit) relies on "Iterative Correction" (unmasking and re-masking), ASMS achieves superior results (78% vs 60%) using **Precision Monotonicity**.
 
-$$d_t = \Delta C_t + \alpha(\Delta C_t) \cdot \beta_t \cdot \mathcal{S}_t \cdot d_{t-1}$$
+* **Adaptive Sorting:** Instead of correcting mistakes, ASMS focuses on **ordering** commitments correctly.
+* **The Mechanism:**
+    1.  The "Penalty Box" (Elastic Mode) ensures unstable tokens (hallucinations) have very low scores.
+    2.  These tokens are forced to the back of the unmasking queue.
+    3.  They remain masked until the very end, when maximum context is available to resolve the ambiguity.
+* **Conclusion:** In reasoning tasks (GSM8K), preventing early errors via strict sorting is superior to trying to "erase" errors later.
 
-where the direction-dependent coefficient is:
-
-$$\alpha(\Delta C_t) = \begin{cases} 
-\beta_{up} & \text{if } \Delta C_t > 0 \text{ (rising)} \\
-\lambda_{down} & \text{if } \Delta C_t \leq 0 \text{ (falling)}
-\end{cases}$$
-
-### 4.3. Hyperparameters
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| $\beta_{up}$ | 0.9 | Momentum coefficient when confidence is rising. Higher = smoother upward trajectory. |
-| $\lambda_{down}$ | 1.5 | Momentum coefficient when confidence is falling. Higher = stronger resistance to drops. |
-
-### 4.4. Intuition
-*   **$\beta_{up} = 0.9$**: When confidence rises, we trust it and allow smooth accumulation.
-*   **$\lambda_{down} = 1.5$**: When confidence drops, we amplify the negative momentum, making it "expensive" to lose confidence. This prevents oscillation without the permanent lock-in of RCR.
-
-### 4.5. Comparison
-| Method | Rising Confidence | Falling Confidence | Failure Mode |
-|--------|-------------------|--------------------|--------------|
-| RCR | Locks in (max-pool) | Ignored | Stubbornness (hallucination lock-in) |
-| ASMS | $\beta_t$ | $\beta_t$ | Can oscillate if $\beta$ too low |
-| **ASMS Elastic** | $\beta_{up} \cdot \beta_t$ | $\lambda_{down} \cdot \beta_t$ | Balanced (easy up, hard down) |
+## 5. Summary of Algorithm
+1.  **Compute Raw Confidence:** $C_t = P(x_t | x_t^{masked})$.
+2.  **Compute Similarity:** $\mathcal{S}_t = \text{CosSim}(x_t, x_{t-1})$.
+3.  **Calculate Delta:** $\Delta C_t = C_t - C_{t-1}$.
+4.  **Apply Elastic Scales:** Amplify $\Delta C_t$ by $\lambda_{down}$ if negative.
+5.  **Update Momentum:** $d_t = \alpha \Delta C + \kappa \beta \mathcal{S} d_{t-1}$.
+6.  **Score & Sort:** $S_t = C_t + \lambda d_t$.
+7.  **Unmask:** Unmask the top-k highest scoring tokens (Monotonic) OR Re-mask the bottom-k (Iterative).
