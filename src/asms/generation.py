@@ -220,27 +220,39 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                 # confidence = torch.where(torch.logical_and(mask_index, valid_token_mask), x0_p, torch.tensor(-np.inf, device=x0.device))
                 confidence = torch.where(mask_index, confidence, torch.tensor(-np.inf, device=x0.device))
 
-                # Select tokens to transfer based on confidence
-                for j in range(confidence.shape[0]):
-                    num_tokens = num_transfer_tokens[j, i].item()
-                    if rcr and not asms:
-                        _, select_indices = torch.topk(confidence[j], k=num_transfer_tokens[j, i:].sum().item())
-                        x[j, select_indices] = x0[j, select_indices]
-                        overtime_confidence[j, select_indices] = confidence[j, select_indices].clone()
-                        # if (x[j,:] == mask_id).sum() <= 0:
-                        if i != (steps_per_block - 1):
-                            overtime_conf_wo_zeros = \
-                                torch.where(overtime_confidence == 0.0, 1.0, overtime_confidence)[j]
-                            num_tokens_to_mask = num_transfer_tokens[j, i + 1:].sum().item()
-                            _, mask_select_indices = torch.topk(overtime_conf_wo_zeros, k=num_tokens_to_mask,
-                                                                largest=False)
-                            if len(mask_select_indices) == 0:
-                                break
-                            x[j, mask_select_indices] = mask_id
-                    else:
-                        if num_tokens > 0:
-                            _, select_indices = torch.topk(confidence[j], k=num_tokens)
+                try:
+                    # Select tokens to transfer based on confidence
+                    for j in range(confidence.shape[0]):
+                        num_tokens = num_transfer_tokens[j, i].item()
+                        if rcr and not asms:
+                            _, select_indices = torch.topk(confidence[j], k=num_transfer_tokens[j, i:].sum().item())
                             x[j, select_indices] = x0[j, select_indices]
-                if rcr and return_intermediates:
-                    intermediate_confidence.append(overtime_confidence.clone().cpu()[:, -gen_length:])
+                            overtime_confidence[j, select_indices] = confidence[j, select_indices].clone()
+                            # if (x[j,:] == mask_id).sum() <= 0:
+                            if i != (steps_per_block - 1):
+                                overtime_conf_wo_zeros = \
+                                    torch.where(overtime_confidence == 0.0, 1.0, overtime_confidence)[j]
+                                num_tokens_to_mask = num_transfer_tokens[j, i + 1:].sum().item()
+                                _, mask_select_indices = torch.topk(overtime_conf_wo_zeros, k=num_tokens_to_mask,
+                                                                    largest=False)
+                                if len(mask_select_indices) == 0:
+                                    break
+                                x[j, mask_select_indices] = mask_id
+                        else:
+                            if num_tokens > 0:
+                                _, select_indices = torch.topk(confidence[j], k=num_tokens)
+                                x[j, select_indices] = x0[j, select_indices]
+                    if rcr and return_intermediates:
+                        intermediate_confidence.append(overtime_confidence.clone().cpu()[:, -gen_length:])
+                except Exception as e:
+                    print(f"ERROR Debugging:")
+                    j_val = locals().get('j', 'N/A')
+                    print(f"  i={i}, j={j_val}")
+                    print(f"  x.shape={x.shape}")
+                    print(f"  x0.shape={x0.shape}")
+                    print(f"  confidence.shape={confidence.shape}")
+                    print(f"  num_transfer_tokens.shape={num_transfer_tokens.shape}")
+                    if 'overtime_confidence' in locals():
+                        print(f"  overtime_confidence.shape={overtime_confidence.shape}")
+                    raise e
         return x[:, -gen_length:], intermediate_results, intermediate_confidence, intermediate_inputs
