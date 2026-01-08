@@ -66,7 +66,7 @@ While standard diffusion (MaskGit) relies on "Iterative Correction" (unmasking a
 
 ## 5. Summary of Algorithm
 1.  **Compute Raw Confidence:** $C_t = P(x_t | x_t^{masked})$.
-2.  **Compute Similarity:** $\mathcal{S}_t = \text{CosSim}(x_t, x_{t-1})$.
+2.  **Compute Similarity:** 𝒮ₜ = CosSim(𝑥ₜ, 𝑥ₜ₋₁)
 3.  **Calculate Delta:** $\Delta C_t = C_t - C_{t-1}$.
 4.  **Apply Elastic Scales:** Amplify $\Delta C_t$ by $\lambda_{down}$ if negative.
 5.  **Update Momentum:** $d_t = \alpha \Delta C + \kappa \beta \mathcal{S} d_{t-1}$.
