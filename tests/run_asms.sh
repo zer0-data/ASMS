@@ -19,7 +19,7 @@ echo "Running Countdown Experiments..."
 # Block Size 2
 # Steps = 512 / 2 = 256
 echo "Countdown Block 2"
-python tests/run_countdown_asms.py \
+python3 tests/run_countdown_asms.py \
     --mode $MODE \
     --beta $BETA \
     --lam $LAM \
@@ -33,7 +33,7 @@ python tests/run_countdown_asms.py \
 # Block Size 8
 # Steps = 512 / 8 = 64
 echo "Countdown Block 8"
-python tests/run_countdown_asms.py \
+python3 tests/run_countdown_asms.py \
     --mode $MODE \
     --beta $BETA \
     --lam $LAM \
@@ -47,7 +47,7 @@ python tests/run_countdown_asms.py \
 # Block Size 32
 # Steps = 512 / 32 = 16
 echo "Countdown Block 32"
-python tests/run_countdown_asms.py \
+python3 tests/run_countdown_asms.py \
     --mode $MODE \
     --beta $BETA \
     --lam $LAM \
@@ -66,7 +66,7 @@ echo "Running Math500 Experiments..."
 # Block Size 4
 # Steps = 512 / 4 = 128
 echo "Math500 Block 4"
-python tests/run_math500_asms.py \
+python3 tests/run_math500_asms.py \
     --mode $MODE \
     --beta $BETA \
     --lam $LAM \
@@ -80,7 +80,7 @@ python tests/run_math500_asms.py \
 # Block Size 8
 # Steps = 512 / 8 = 64
 echo "Math500 Block 8"
-python tests/run_math500_asms.py \
+python3 tests/run_math500_asms.py \
     --mode $MODE \
     --beta $BETA \
     --lam $LAM \
@@ -94,7 +94,7 @@ python tests/run_math500_asms.py \
 # Block Size 32
 # Steps = 512 / 32 = 16
 echo "Math500 Block 32"
-python tests/run_math500_asms.py \
+python3 tests/run_math500_asms.py \
     --mode $MODE \
     --beta $BETA \
     --lam $LAM \
