@@ -1,0 +1,4098 @@
+[
+    {
+        "id": 0,
+        "input": [
+            30,
+            100,
+            93
+        ],
+        "target": 23,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [30, 93, 100], got tokens from To create an arithmetic expression that the to  0000",
+            "time": 6.322333574295044,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  0000"
+        }
+    },
+    {
+        "id": 1,
+        "input": [
+            83,
+            18,
+            75
+        ],
+        "target": 10,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [18, 75, 83], got tokens from To create an arithmetic expression that the to  83, ",
+            "time": 6.073701858520508,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  83, "
+        }
+    },
+    {
+        "id": 2,
+        "input": [
+            76,
+            41,
+            59
+        ],
+        "target": 24,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [41, 59, 76], got tokens from To solve an arithmetic expression that the to  6,, ",
+            "time": 6.057606220245361,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the to  6,, "
+        }
+    },
+    {
+        "id": 3,
+        "input": [
+            90,
+            43,
+            90
+        ],
+        "target": 43,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [43, 90, 90], got tokens from To create an arithmetic expression that the to  00  ",
+            "time": 6.055392026901245,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  00  "
+        }
+    },
+    {
+        "id": 4,
+        "input": [
+            82,
+            35,
+            4
+        ],
+        "target": 58,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [4, 35, 82], got tokens from To create an arithmetic expression that the to  8",
+            "time": 6.0452399253845215,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  8"
+        }
+    },
+    {
+        "id": 5,
+        "input": [
+            69,
+            33,
+            59
+        ],
+        "target": 95,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [33, 59, 69], got tokens from To create an arithmetic expression that the to  9, 33,   9",
+            "time": 6.019148826599121,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  9, 33,   9"
+        }
+    },
+    {
+        "id": 6,
+        "input": [
+            37,
+            1,
+            20
+        ],
+        "target": 18,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [1, 20, 37], got tokens from To create an arithmetic expression that the the  17,  ,  ",
+            "time": 6.021991729736328,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the the  17,  ,  "
+        }
+    },
+    {
+        "id": 7,
+        "input": [
+            91,
+            2,
+            52
+        ],
+        "target": 37,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [2, 52, 91], got tokens from To create an arithmetic expression that the to  3",
+            "time": 6.079568386077881,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  3"
+        }
+    },
+    {
+        "id": 8,
+        "input": [
+            90,
+            22,
+            61
+        ],
+        "target": 7,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [22, 61, 90], got tokens from To create an arithmetic expression that the to exactly  0     ",
+            "time": 5.9894068241119385,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the to exactly  0     "
+        }
+    },
+    {
+        "id": 9,
+        "input": [
+            67,
+            47,
+            25
+        ],
+        "target": 5,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [25, 47, 67], got tokens from To create an arithmetic expression that7 to exactly  7    ",
+            "time": 6.046463251113892,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that7 to exactly  7    "
+        }
+    },
+    {
+        "id": 10,
+        "input": [
+            9,
+            89,
+            69
+        ],
+        "target": 29,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [9, 69, 89], got tokens from To solve an arithmetic expression that evaluates to numbers 99,    99",
+            "time": 5.983807802200317,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that evaluates to numbers 99,    99"
+        }
+    },
+    {
+        "id": 11,
+        "input": [
+            86,
+            21,
+            74
+        ],
+        "target": 9,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [21, 74, 86], got tokens from To solve an arithmetic expression that the to       ",
+            "time": 5.966620683670044,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the to       "
+        }
+    },
+    {
+        "id": 12,
+        "input": [
+            52,
+            68,
+            27
+        ],
+        "target": 11,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [27, 52, 68], got tokens from To create an arithmetic expression that the to  22, ",
+            "time": 6.016230344772339,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  22, "
+        }
+    },
+    {
+        "id": 13,
+        "input": [
+            4,
+            89,
+            12
+        ],
+        "target": 73,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [4, 12, 89], got tokens from To solve an arithmetic expression that evaluates to     using",
+            "time": 5.997620344161987,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that evaluates to     using"
+        }
+    },
+    {
+        "id": 14,
+        "input": [
+            64,
+            27,
+            74
+        ],
+        "target": 37,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [27, 64, 74], got tokens from To create an arithmetic expression that the to 64,  7,  77",
+            "time": 6.016918659210205,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 64,  7,  77"
+        }
+    },
+    {
+        "id": 15,
+        "input": [
+            69,
+            31,
+            78
+        ],
+        "target": 40,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [31, 69, 78], got tokens from To create an arithmetic expression that the to  9,   ",
+            "time": 6.014923095703125,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  9,   "
+        }
+    },
+    {
+        "id": 16,
+        "input": [
+            61,
+            42,
+            21
+        ],
+        "target": 40,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [21, 42, 61], got tokens from To solve an arithmetic expression that the to  11  ",
+            "time": 6.04404616355896,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  11  "
+        }
+    },
+    {
+        "id": 17,
+        "input": [
+            27,
+            76,
+            38
+        ],
+        "target": 11,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [27, 38, 76], got tokens from To create an arithmetic expression that the to  77, ",
+            "time": 6.048960447311401,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  77, "
+        }
+    },
+    {
+        "id": 18,
+        "input": [
+            37,
+            1,
+            73
+        ],
+        "target": 37,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [1, 37, 73], got tokens from To create an arithmetic expression that evaluates to exactly 37 using the",
+            "time": 6.022197484970093,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to exactly 37 using the"
+        }
+    },
+    {
+        "id": 19,
+        "input": [
+            92,
+            1,
+            1
+        ],
+        "target": 46,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [1, 1, 92], got tokens from To solve an arithmetic expression that the to      ",
+            "time": 6.0409300327301025,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to      "
+        }
+    },
+    {
+        "id": 20,
+        "input": [
+            92,
+            63,
+            72
+        ],
+        "target": 43,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [63, 72, 92], got tokens from To solve an arithmetic expression that the to      ",
+            "time": 6.069577217102051,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the to      "
+        }
+    },
+    {
+        "id": 21,
+        "input": [
+            87,
+            28,
+            35
+        ],
+        "target": 94,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [28, 35, 87], got tokens from To create an arithmetic expression that the to      ",
+            "time": 6.053934097290039,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to      "
+        }
+    },
+    {
+        "id": 22,
+        "input": [
+            12,
+            71,
+            32
+        ],
+        "target": 91,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [12, 32, 71], got tokens from To create an arithmetic expression that the to  11  ",
+            "time": 6.064391136169434,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  11  "
+        }
+    },
+    {
+        "id": 23,
+        "input": [
+            80,
+            60,
+            63
+        ],
+        "target": 83,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [60, 63, 80], got tokens from To create an arithmetic expression that the to  00  ",
+            "time": 6.06471848487854,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  00  "
+        }
+    },
+    {
+        "id": 24,
+        "input": [
+            67,
+            27,
+            71
+        ],
+        "target": 23,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [27, 67, 71], got tokens from To create an arithmetic expression that the to  77   7  ",
+            "time": 6.068856954574585,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  77   7  "
+        }
+    },
+    {
+        "id": 25,
+        "input": [
+            16,
+            87,
+            86
+        ],
+        "target": 17,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [16, 86, 87], got tokens from To solve an arithmetic expression that the to 16,  ,    ",
+            "time": 6.070463180541992,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to 16,  ,    "
+        }
+    },
+    {
+        "id": 26,
+        "input": [
+            4,
+            15,
+            15
+        ],
+        "target": 4,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [4, 15, 15], got tokens from To create an arithmetic expression that evaluates to     ",
+            "time": 6.046309232711792,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to     "
+        }
+    },
+    {
+        "id": 27,
+        "input": [
+            20,
+            12,
+            63
+        ],
+        "target": 55,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [12, 20, 63], got tokens from To create an arithmetic expression that the to  22, ",
+            "time": 6.065460443496704,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  22, "
+        }
+    },
+    {
+        "id": 28,
+        "input": [
+            46,
+            35,
+            19
+        ],
+        "target": 100,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [19, 35, 46], got tokens from To solve an arithmetic expression that the the    ,  ",
+            "time": 6.06585955619812,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the the    ,  "
+        }
+    },
+    {
+        "id": 29,
+        "input": [
+            94,
+            69,
+            35
+        ],
+        "target": 60,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [35, 69, 94], got tokens from To create an arithmetic expression that the to  99, 9",
+            "time": 6.07620096206665,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the to  99, 9"
+        }
+    },
+    {
+        "id": 30,
+        "input": [
+            88,
+            84,
+            69
+        ],
+        "target": 73,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [69, 84, 88], got tokens from To create an arithmetic expression that the numbers 88,  8,    ",
+            "time": 6.0840160846710205,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the numbers 88,  8,    "
+        }
+    },
+    {
+        "id": 31,
+        "input": [
+            29,
+            98,
+            57
+        ],
+        "target": 70,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [29, 57, 98], got tokens from To create an arithmetic expression that the to  9,  9",
+            "time": 6.074934244155884,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  9,  9"
+        }
+    },
+    {
+        "id": 32,
+        "input": [
+            13,
+            76,
+            80
+        ],
+        "target": 12,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [13, 76, 80], got tokens from To create an arithmetic expression that the to  13, ",
+            "time": 6.112377405166626,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  13, "
+        }
+    },
+    {
+        "id": 33,
+        "input": [
+            72,
+            91,
+            49
+        ],
+        "target": 30,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [49, 72, 91], got tokens from To create an arithmetic expression that the to  22, 9",
+            "time": 6.077717304229736,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  22, 9"
+        }
+    },
+    {
+        "id": 34,
+        "input": [
+            56,
+            86,
+            24
+        ],
+        "target": 54,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [24, 56, 86], got tokens from To solve an arithmetic expression that the to  66  ",
+            "time": 6.072681903839111,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  66  "
+        }
+    },
+    {
+        "id": 35,
+        "input": [
+            41,
+            99,
+            76
+        ],
+        "target": 64,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [41, 76, 99], got tokens from To solve an arithmetic expression that the to  1 , ",
+            "time": 6.082566738128662,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  1 , "
+        }
+    },
+    {
+        "id": 36,
+        "input": [
+            38,
+            21,
+            31
+        ],
+        "target": 3,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [21, 31, 38], got tokens from To solve an arithmetic expression that the to exactly 3,    1  11111                                                                                                                                                                                                                                                             ",
+            "time": 6.07390022277832,
+            "flicker": 16.666666666666668,
+            "generated_text": "To solve an arithmetic expression that the to exactly 3,    1  11111                                                                                                                                                                                                                                                             "
+        }
+    },
+    {
+        "id": 37,
+        "input": [
+            11,
+            85,
+            44
+        ],
+        "target": 81,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [11, 44, 85], got tokens from To solve an arithmetic expression that the to 111  5,  4411",
+            "time": 6.082063436508179,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to 111  5,  4411"
+        }
+    },
+    {
+        "id": 38,
+        "input": [
+            47,
+            79,
+            71
+        ],
+        "target": 39,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [47, 71, 79], got tokens from To create an arithmetic expression that the to  7,  7,  7",
+            "time": 6.076437711715698,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  7,  7,  7"
+        }
+    },
+    {
+        "id": 39,
+        "input": [
+            43,
+            23,
+            64
+        ],
+        "target": 44,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [23, 43, 64], got tokens from To solve an arithmetic expression that the to 44        ",
+            "time": 6.077060222625732,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to 44        "
+        }
+    },
+    {
+        "id": 40,
+        "input": [
+            79,
+            46,
+            37
+        ],
+        "target": 88,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [37, 46, 79], got tokens from To create an arithmetic expression that the to  77, ",
+            "time": 6.07357120513916,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  77, "
+        }
+    },
+    {
+        "id": 41,
+        "input": [
+            52,
+            88,
+            46
+        ],
+        "target": 94,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [46, 52, 88], got tokens from To create an arithmetic expression that the to  2,, 8",
+            "time": 6.108123302459717,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  2,, 8"
+        }
+    },
+    {
+        "id": 42,
+        "input": [
+            14,
+            32,
+            7
+        ],
+        "target": 39,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [7, 14, 32], got tokens from To create an arithmetic expression that the the  3",
+            "time": 6.088165283203125,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the the  3"
+        }
+    },
+    {
+        "id": 43,
+        "input": [
+            79,
+            99,
+            61
+        ],
+        "target": 81,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [61, 79, 99], got tokens from To create an arithmetic expression that the to  99, 9",
+            "time": 6.098172187805176,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  99, 9"
+        }
+    },
+    {
+        "id": 44,
+        "input": [
+            59,
+            38,
+            95
+        ],
+        "target": 2,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [38, 59, 95], got tokens from To solve an arithmetic expression that9 to exactly      ",
+            "time": 6.106587648391724,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that9 to exactly      "
+        }
+    },
+    {
+        "id": 45,
+        "input": [
+            91,
+            85,
+            36
+        ],
+        "target": 30,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [36, 85, 91], got tokens from To create an arithmetic expression that the to  11, ",
+            "time": 6.112645864486694,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  11, "
+        }
+    },
+    {
+        "id": 46,
+        "input": [
+            41,
+            24,
+            83
+        ],
+        "target": 18,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [24, 41, 83], got tokens from To create an arithmetic expression that the to  11,  ",
+            "time": 6.28179669380188,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  11,  "
+        }
+    },
+    {
+        "id": 47,
+        "input": [
+            27,
+            83,
+            91
+        ],
+        "target": 35,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [27, 83, 91], got tokens from To create an arithmetic expression that the numbers  7,, 3,   ",
+            "time": 6.186372995376587,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the numbers  7,, 3,   "
+        }
+    },
+    {
+        "id": 48,
+        "input": [
+            75,
+            96,
+            36
+        ],
+        "target": 57,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [36, 75, 96], got tokens from To create an arithmetic expression that the to  55, ",
+            "time": 6.094192743301392,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  55, "
+        }
+    },
+    {
+        "id": 49,
+        "input": [
+            31,
+            27,
+            78
+        ],
+        "target": 20,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [27, 31, 78], got tokens from To create an arithmetic expression that the to  1,  ",
+            "time": 6.0743324756622314,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  1,  "
+        }
+    },
+    {
+        "id": 50,
+        "input": [
+            89,
+            98,
+            28
+        ],
+        "target": 19,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [28, 89, 98], got tokens from To create an arithmetic expression that the to  99, ",
+            "time": 6.056764841079712,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  99, "
+        }
+    },
+    {
+        "id": 51,
+        "input": [
+            29,
+            46,
+            36
+        ],
+        "target": 39,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [29, 36, 46], got tokens from To solve an arithmetic expression that the to  9,  ",
+            "time": 6.037265777587891,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  9,  "
+        }
+    },
+    {
+        "id": 52,
+        "input": [
+            11,
+            35,
+            12
+        ],
+        "target": 36,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [11, 12, 35], got tokens from To create an arithmetic expression that the to 111  11 1",
+            "time": 6.041439533233643,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 111  11 1"
+        }
+    },
+    {
+        "id": 53,
+        "input": [
+            48,
+            34,
+            17
+        ],
+        "target": 3,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [17, 34, 48], got tokens from To solve an arithmetic expression that the to exactly 4      ",
+            "time": 5.989034652709961,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the to exactly 4      "
+        }
+    },
+    {
+        "id": 54,
+        "input": [
+            32,
+            70,
+            31
+        ],
+        "target": 70,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [31, 32, 70], got tokens from To create an arithmetic expression that the to  3   ",
+            "time": 6.018234729766846,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  3   "
+        }
+    },
+    {
+        "id": 55,
+        "input": [
+            34,
+            53,
+            32
+        ],
+        "target": 55,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [32, 34, 53], got tokens from To create an arithmetic expression that the to 333 3333333",
+            "time": 6.011521816253662,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 333 3333333"
+        }
+    },
+    {
+        "id": 56,
+        "input": [
+            48,
+            54,
+            19
+        ],
+        "target": 25,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [19, 48, 54], got tokens from To solve an arithmetic expression that the to  8 , ",
+            "time": 5.97806453704834,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  8 , "
+        }
+    },
+    {
+        "id": 57,
+        "input": [
+            1,
+            18,
+            51
+        ],
+        "target": 33,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [1, 18, 51], got tokens from To create an arithmetic expression that evaluates to  111 ",
+            "time": 5.973119258880615,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to  111 "
+        }
+    },
+    {
+        "id": 58,
+        "input": [
+            3,
+            64,
+            55
+        ],
+        "target": 12,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [3, 55, 64], got tokens from To create an arithmetic expression that evaluates to     ",
+            "time": 6.025607347488403,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to     "
+        }
+    },
+    {
+        "id": 59,
+        "input": [
+            73,
+            49,
+            43
+        ],
+        "target": 79,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [43, 49, 73], got tokens from To create an arithmetic expression that the to 73,    ",
+            "time": 6.089977741241455,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 73,    "
+        }
+    },
+    {
+        "id": 60,
+        "input": [
+            95,
+            34,
+            52
+        ],
+        "target": 9,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [34, 52, 95], got tokens from To create an arithmetic expression that the to  95, ",
+            "time": 6.0112504959106445,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the to  95, "
+        }
+    },
+    {
+        "id": 61,
+        "input": [
+            32,
+            66,
+            34
+        ],
+        "target": 68,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [32, 34, 66], got tokens from To create an arithmetic expression that the to  33  ",
+            "time": 5.974918842315674,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  33  "
+        }
+    },
+    {
+        "id": 62,
+        "input": [
+            32,
+            44,
+            20
+        ],
+        "target": 32,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [20, 32, 44], got tokens from To create an arithmetic expression that the to 32   ",
+            "time": 6.005248308181763,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 32   "
+        }
+    },
+    {
+        "id": 63,
+        "input": [
+            42,
+            21,
+            39
+        ],
+        "target": 78,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [21, 39, 42], got tokens from To create an arithmetic expression that the to  22  2",
+            "time": 6.024392604827881,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  22  2"
+        }
+    },
+    {
+        "id": 64,
+        "input": [
+            21,
+            12,
+            81
+        ],
+        "target": 72,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [12, 21, 81], got tokens from To create an arithmetic expression that the to  11, 11",
+            "time": 5.9580512046813965,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  11, 11"
+        }
+    },
+    {
+        "id": 65,
+        "input": [
+            73,
+            42,
+            78
+        ],
+        "target": 37,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [42, 73, 78], got tokens from To create an arithmetic expression that the to  73  ",
+            "time": 5.999288320541382,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  73  "
+        }
+    },
+    {
+        "id": 66,
+        "input": [
+            67,
+            4,
+            10
+        ],
+        "target": 73,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [4, 10, 67], got tokens from To create an arithmetic expression that evaluates to  77 using the ",
+            "time": 5.946633577346802,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that evaluates to  77 using the "
+        }
+    },
+    {
+        "id": 67,
+        "input": [
+            94,
+            31,
+            30
+        ],
+        "target": 94,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [30, 31, 94], got tokens from To create an arithmetic expression that the to      ",
+            "time": 6.009814262390137,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to      "
+        }
+    },
+    {
+        "id": 68,
+        "input": [
+            7,
+            82,
+            61
+        ],
+        "target": 28,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [7, 61, 82], got tokens from To create an arithmetic expression that evaluates to exactly  ,       ",
+            "time": 5.9824769496917725,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that evaluates to exactly  ,       "
+        }
+    },
+    {
+        "id": 69,
+        "input": [
+            18,
+            37,
+            2
+        ],
+        "target": 73,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [2, 18, 37], got tokens from To create an arithmetic expression that the to  73       ",
+            "time": 5.97499942779541,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the to  73       "
+        }
+    },
+    {
+        "id": 70,
+        "input": [
+            91,
+            89,
+            61
+        ],
+        "target": 63,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [61, 89, 91], got tokens from To create an arithmetic expression that the to  11, ",
+            "time": 5.994740724563599,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  11, "
+        }
+    },
+    {
+        "id": 71,
+        "input": [
+            58,
+            52,
+            72
+        ],
+        "target": 66,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [52, 58, 72], got tokens from To create an arithmetic expression that the to   ,    ",
+            "time": 6.0035669803619385,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to   ,    "
+        }
+    },
+    {
+        "id": 72,
+        "input": [
+            31,
+            41,
+            75
+        ],
+        "target": 65,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [31, 41, 75], got tokens from To create an arithmetic expression that the to  11, 1",
+            "time": 6.000334978103638,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  11, 1"
+        }
+    },
+    {
+        "id": 73,
+        "input": [
+            48,
+            96,
+            26
+        ],
+        "target": 74,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [26, 48, 96], got tokens from To solve an arithmetic expression that the to  8,,   ",
+            "time": 6.066279888153076,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  8,,   "
+        }
+    },
+    {
+        "id": 74,
+        "input": [
+            43,
+            49,
+            36
+        ],
+        "target": 56,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [36, 43, 49], got tokens from To create an arithmetic expression that the to  33  ",
+            "time": 6.015795707702637,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  33  "
+        }
+    },
+    {
+        "id": 75,
+        "input": [
+            7,
+            18,
+            2
+        ],
+        "target": 32,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [2, 7, 18], got tokens from To solve an arithmetic expression that the to     ",
+            "time": 6.010365962982178,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to     "
+        }
+    },
+    {
+        "id": 76,
+        "input": [
+            69,
+            80,
+            93
+        ],
+        "target": 82,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [69, 80, 93], got tokens from To create an arithmetic expression that the to  99, ",
+            "time": 6.027729511260986,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  99, "
+        }
+    },
+    {
+        "id": 77,
+        "input": [
+            80,
+            2,
+            40
+        ],
+        "target": 1,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [2, 40, 80], got tokens from To create an arithmetic expression that evaluates to    ",
+            "time": 6.065251111984253,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to    "
+        }
+    },
+    {
+        "id": 78,
+        "input": [
+            43,
+            70,
+            92
+        ],
+        "target": 21,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [43, 70, 92], got tokens from To create an arithmetic expression that the to  3,, ",
+            "time": 6.048217535018921,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  3,, "
+        }
+    },
+    {
+        "id": 79,
+        "input": [
+            17,
+            96,
+            91
+        ],
+        "target": 22,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [17, 91, 96], got tokens from To create an arithmetic expression that the to  11  ",
+            "time": 6.057621240615845,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  11  "
+        }
+    },
+    {
+        "id": 80,
+        "input": [
+            80,
+            82,
+            47
+        ],
+        "target": 45,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [47, 80, 82], got tokens from To solve an arithmetic expression that the to  00, ",
+            "time": 6.06775164604187,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  00, "
+        }
+    },
+    {
+        "id": 81,
+        "input": [
+            61,
+            60,
+            4
+        ],
+        "target": 3,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [4, 60, 61], got tokens from To create an arithmetic expression that the to   ",
+            "time": 6.068113803863525,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to   "
+        }
+    },
+    {
+        "id": 82,
+        "input": [
+            84,
+            96,
+            99
+        ],
+        "target": 87,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [84, 96, 99], got tokens from To solve an arithmetic expression that the to 8    9",
+            "time": 6.061557054519653,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to 8    9"
+        }
+    },
+    {
+        "id": 83,
+        "input": [
+            22,
+            30,
+            33
+        ],
+        "target": 41,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [22, 30, 33], got tokens from To create an arithmetic expression that the to  22, ",
+            "time": 6.079469680786133,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  22, "
+        }
+    },
+    {
+        "id": 84,
+        "input": [
+            87,
+            68,
+            9
+        ],
+        "target": 10,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [9, 68, 87], got tokens from To create an arithmetic expression that evaluates to  ",
+            "time": 6.076336860656738,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to  "
+        }
+    },
+    {
+        "id": 85,
+        "input": [
+            21,
+            93,
+            76
+        ],
+        "target": 4,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [21, 76, 93], got tokens from To create an arithmetic expression that the to exactly       ",
+            "time": 6.070298910140991,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the to exactly       "
+        }
+    },
+    {
+        "id": 86,
+        "input": [
+            4,
+            73,
+            84
+        ],
+        "target": 44,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [4, 73, 84], got tokens from To solve an arithmetic expression that7 to  44  ",
+            "time": 6.071189880371094,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that7 to  44  "
+        }
+    },
+    {
+        "id": 87,
+        "input": [
+            35,
+            52,
+            26
+        ],
+        "target": 61,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [26, 35, 52], got tokens from To create an arithmetic expression that the to  55, 5",
+            "time": 6.073883533477783,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  55, 5"
+        }
+    },
+    {
+        "id": 88,
+        "input": [
+            72,
+            41,
+            67
+        ],
+        "target": 46,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [41, 67, 72], got tokens from To create an arithmetic expression that the to  72  ",
+            "time": 6.082702398300171,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the to  72  "
+        }
+    },
+    {
+        "id": 89,
+        "input": [
+            98,
+            10,
+            59
+        ],
+        "target": 49,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [10, 59, 98], got tokens from To solve an arithmetic expression that the to  99, ",
+            "time": 6.225698471069336,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  99, "
+        }
+    },
+    {
+        "id": 90,
+        "input": [
+            15,
+            78,
+            62
+        ],
+        "target": 1,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [15, 62, 78], got tokens from To solve an arithmetic expression that evaluates to exactly 11    ",
+            "time": 6.139109373092651,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that evaluates to exactly 11    "
+        }
+    },
+    {
+        "id": 91,
+        "input": [
+            88,
+            26,
+            94
+        ],
+        "target": 20,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [26, 88, 94], got tokens from To create an arithmetic expression that evaluates to  88  ",
+            "time": 6.082295179367065,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to  88  "
+        }
+    },
+    {
+        "id": 92,
+        "input": [
+            76,
+            81,
+            52
+        ],
+        "target": 57,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [52, 76, 81], got tokens from To create an arithmetic expression that the to  7 , ",
+            "time": 6.168224811553955,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  7 , "
+        }
+    },
+    {
+        "id": 93,
+        "input": [
+            43,
+            40,
+            86
+        ],
+        "target": 83,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [40, 43, 86], got tokens from To create an arithmetic expression that the to  33, 4",
+            "time": 6.216522932052612,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  33, 4"
+        }
+    },
+    {
+        "id": 94,
+        "input": [
+            4,
+            12,
+            97
+        ],
+        "target": 81,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [4, 12, 97], got tokens from To create an arithmetic expression that evaluates to numbers  ,         ",
+            "time": 6.084048271179199,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to numbers  ,         "
+        }
+    },
+    {
+        "id": 95,
+        "input": [
+            60,
+            77,
+            70
+        ],
+        "target": 66,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [60, 70, 77], got tokens from To create an arithmetic expression that evaluates to   7  ",
+            "time": 6.078191518783569,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to   7  "
+        }
+    },
+    {
+        "id": 96,
+        "input": [
+            5,
+            42,
+            51
+        ],
+        "target": 98,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [5, 42, 51], got tokens from To create an arithmetic expression that the to  5  ",
+            "time": 6.2223961353302,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the to  5  "
+        }
+    },
+    {
+        "id": 97,
+        "input": [
+            33,
+            92,
+            17
+        ],
+        "target": 76,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [17, 33, 92], got tokens from To solve an arithmetic expression that the to 33,, 9,,     \n\n",
+            "time": 6.236411094665527,
+            "flicker": 0.13333333333333333,
+            "generated_text": "To solve an arithmetic expression that the to 33,, 9,,     \n\n"
+        }
+    },
+    {
+        "id": 98,
+        "input": [
+            5,
+            69,
+            79
+        ],
+        "target": 5,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [5, 69, 79], got tokens from To create an arithmetic expression that evaluates to    ",
+            "time": 6.248488426208496,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to    "
+        }
+    },
+    {
+        "id": 99,
+        "input": [
+            21,
+            75,
+            93
+        ],
+        "target": 39,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [21, 75, 93], got tokens from To create an arithmetic expression that the to  1,, ",
+            "time": 6.252198219299316,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  1,, "
+        }
+    },
+    {
+        "id": 100,
+        "input": [
+            69,
+            86,
+            74
+        ],
+        "target": 57,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [69, 74, 86], got tokens from To create an arithmetic expression that the to  9,   ",
+            "time": 6.268567800521851,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  9,   "
+        }
+    },
+    {
+        "id": 101,
+        "input": [
+            20,
+            28,
+            19
+        ],
+        "target": 67,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [19, 20, 28], got tokens from To create an arithmetic expression that the to    , ",
+            "time": 6.263623237609863,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to    , "
+        }
+    },
+    {
+        "id": 102,
+        "input": [
+            84,
+            88,
+            53
+        ],
+        "target": 57,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [53, 84, 88], got tokens from To create an arithmetic expression that the to  88, 8",
+            "time": 6.19113826751709,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the to  88, 8"
+        }
+    },
+    {
+        "id": 103,
+        "input": [
+            22,
+            44,
+            88
+        ],
+        "target": 11,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [22, 44, 88], got tokens from To create an arithmetic expression that the to  22, 44",
+            "time": 6.260869741439819,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  22, 44"
+        }
+    },
+    {
+        "id": 104,
+        "input": [
+            13,
+            49,
+            80
+        ],
+        "target": 44,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [13, 49, 80], got tokens from To solve an arithmetic expression that the to  43, ",
+            "time": 6.2376227378845215,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  43, "
+        }
+    },
+    {
+        "id": 105,
+        "input": [
+            89,
+            25,
+            30
+        ],
+        "target": 34,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [25, 30, 89], got tokens from To create an arithmetic expression that the to      ",
+            "time": 6.108663082122803,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to      "
+        }
+    },
+    {
+        "id": 106,
+        "input": [
+            57,
+            7,
+            4
+        ],
+        "target": 68,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [4, 7, 57], got tokens from To solve an arithmetic expression that7 to   7",
+            "time": 6.263445138931274,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that7 to   7"
+        }
+    },
+    {
+        "id": 107,
+        "input": [
+            76,
+            46,
+            26
+        ],
+        "target": 4,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [26, 46, 76], got tokens from To solve an arithmetic expression that evaluates to exactly   6    ",
+            "time": 6.10828971862793,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that evaluates to exactly   6    "
+        }
+    },
+    {
+        "id": 108,
+        "input": [
+            99,
+            13,
+            40
+        ],
+        "target": 72,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [13, 40, 99], got tokens from To create an arithmetic expression that the to  99, ",
+            "time": 6.096653699874878,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  99, "
+        }
+    },
+    {
+        "id": 109,
+        "input": [
+            49,
+            73,
+            81
+        ],
+        "target": 57,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [49, 73, 81], got tokens from To create an arithmetic expression that the to  9,  7,     ",
+            "time": 6.11078143119812,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  9,  7,     "
+        }
+    },
+    {
+        "id": 110,
+        "input": [
+            46,
+            21,
+            17
+        ],
+        "target": 42,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [17, 21, 46], got tokens from To create an arithmetic expression that the to 46,  11  1",
+            "time": 6.123772621154785,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 46,  11  1"
+        }
+    },
+    {
+        "id": 111,
+        "input": [
+            52,
+            17,
+            97
+        ],
+        "target": 28,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [17, 52, 97], got tokens from To create an arithmetic expression that the to  22, ",
+            "time": 6.097923040390015,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  22, "
+        }
+    },
+    {
+        "id": 112,
+        "input": [
+            45,
+            72,
+            25
+        ],
+        "target": 52,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [25, 45, 72], got tokens from To solve an arithmetic expression that the to  55, ",
+            "time": 6.132635593414307,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  55, "
+        }
+    },
+    {
+        "id": 113,
+        "input": [
+            36,
+            29,
+            100
+        ],
+        "target": 93,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [29, 36, 100], got tokens from To solve an arithmetic expression that the to  36  ",
+            "time": 6.118659496307373,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the to  36  "
+        }
+    },
+    {
+        "id": 114,
+        "input": [
+            94,
+            38,
+            78
+        ],
+        "target": 22,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [38, 78, 94], got tokens from To create an arithmetic expression that the to   4, ",
+            "time": 6.119239568710327,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to   4, "
+        }
+    },
+    {
+        "id": 115,
+        "input": [
+            96,
+            93,
+            89
+        ],
+        "target": 92,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [89, 93, 96], got tokens from To solve an arithmetic expression that the to 99, 9999",
+            "time": 6.111021995544434,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to 99, 9999"
+        }
+    },
+    {
+        "id": 116,
+        "input": [
+            77,
+            19,
+            52
+        ],
+        "target": 6,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [19, 52, 77], got tokens from To solve an arithmetic expression that7 to  77   ",
+            "time": 6.080699682235718,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that7 to  77   "
+        }
+    },
+    {
+        "id": 117,
+        "input": [
+            38,
+            92,
+            52
+        ],
+        "target": 78,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [38, 52, 92], got tokens from To create an arithmetic expression that the to  8,, 9,, ",
+            "time": 6.072491645812988,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  8,, 9,, "
+        }
+    },
+    {
+        "id": 118,
+        "input": [
+            87,
+            21,
+            86
+        ],
+        "target": 22,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [21, 86, 87], got tokens from To create an arithmetic expression that evaluates to     ",
+            "time": 6.080723524093628,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to     "
+        }
+    },
+    {
+        "id": 119,
+        "input": [
+            43,
+            8,
+            23
+        ],
+        "target": 58,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [8, 23, 43], got tokens from To create an arithmetic expression that the the  83, ,,   ",
+            "time": 6.07485294342041,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the the  83, ,,   "
+        }
+    },
+    {
+        "id": 120,
+        "input": [
+            28,
+            54,
+            99
+        ],
+        "target": 73,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [28, 54, 99], got tokens from To create an arithmetic expression that the to exactly   ,        9",
+            "time": 6.081870079040527,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to exactly   ,        9"
+        }
+    },
+    {
+        "id": 121,
+        "input": [
+            72,
+            28,
+            55
+        ],
+        "target": 45,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [28, 55, 72], got tokens from To create an arithmetic expression that the to  22  2",
+            "time": 6.098002195358276,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  22  2"
+        }
+    },
+    {
+        "id": 122,
+        "input": [
+            30,
+            8,
+            75
+        ],
+        "target": 37,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [8, 30, 75], got tokens from To create an arithmetic expression that evaluates to  37       ",
+            "time": 6.069052696228027,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to  37       "
+        }
+    },
+    {
+        "id": 123,
+        "input": [
+            89,
+            79,
+            88
+        ],
+        "target": 80,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [79, 88, 89], got tokens from To create an arithmetic expression that the to 89, ",
+            "time": 6.081549406051636,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 89, "
+        }
+    },
+    {
+        "id": 124,
+        "input": [
+            33,
+            20,
+            7
+        ],
+        "target": 6,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [7, 20, 33], got tokens from To create an arithmetic expression that the to  3",
+            "time": 6.058647871017456,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  3"
+        }
+    },
+    {
+        "id": 125,
+        "input": [
+            20,
+            41,
+            53
+        ],
+        "target": 74,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [20, 41, 53], got tokens from To create an arithmetic expression that the to  0,  1,    ",
+            "time": 6.077770948410034,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  0,  1,    "
+        }
+    },
+    {
+        "id": 126,
+        "input": [
+            22,
+            52,
+            37
+        ],
+        "target": 7,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [22, 37, 52], got tokens from To create an arithmetic expression that2 to exactly  22     ",
+            "time": 6.048625946044922,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that2 to exactly  22     "
+        }
+    },
+    {
+        "id": 127,
+        "input": [
+            29,
+            47,
+            65
+        ],
+        "target": 2,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [29, 47, 65], got tokens from To solve an arithmetic expression that the to exactly    , ",
+            "time": 6.031381607055664,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the to exactly    , "
+        }
+    },
+    {
+        "id": 128,
+        "input": [
+            74,
+            5,
+            20
+        ],
+        "target": 99,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [5, 20, 74], got tokens from To create an arithmetic expression that the to  9",
+            "time": 6.069394588470459,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  9"
+        }
+    },
+    {
+        "id": 129,
+        "input": [
+            79,
+            78,
+            42
+        ],
+        "target": 43,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [42, 78, 79], got tokens from To solve an arithmetic expression that the to   7, 7",
+            "time": 6.035582065582275,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to   7, 7"
+        }
+    },
+    {
+        "id": 130,
+        "input": [
+            74,
+            56,
+            53
+        ],
+        "target": 71,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [53, 56, 74], got tokens from To create an arithmetic expression that the to 77 , ",
+            "time": 6.014844179153442,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 77 , "
+        }
+    },
+    {
+        "id": 131,
+        "input": [
+            70,
+            43,
+            66
+        ],
+        "target": 47,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [43, 66, 70], got tokens from To create an arithmetic expression that the to  00, ",
+            "time": 5.981670379638672,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  00, "
+        }
+    },
+    {
+        "id": 132,
+        "input": [
+            17,
+            20,
+            12
+        ],
+        "target": 49,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [12, 17, 20], got tokens from To create an arithmetic expression that the to  71  ",
+            "time": 5.998504400253296,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  71  "
+        }
+    },
+    {
+        "id": 133,
+        "input": [
+            67,
+            14,
+            9
+        ],
+        "target": 72,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [9, 14, 67], got tokens from To solve an arithmetic expression that the the  77  ",
+            "time": 5.974918842315674,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the the  77  "
+        }
+    },
+    {
+        "id": 134,
+        "input": [
+            89,
+            45,
+            15
+        ],
+        "target": 59,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [15, 45, 89], got tokens from To solve an arithmetic expression that the to  9 , ",
+            "time": 6.009304523468018,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  9 , "
+        }
+    },
+    {
+        "id": 135,
+        "input": [
+            23,
+            29,
+            33
+        ],
+        "target": 39,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [23, 29, 33], got tokens from To create an arithmetic expression that the to  33, 33",
+            "time": 6.031358480453491,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  33, 33"
+        }
+    },
+    {
+        "id": 136,
+        "input": [
+            60,
+            85,
+            87
+        ],
+        "target": 62,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [60, 85, 87], got tokens from To solve an arithmetic expression that the to 60,  ",
+            "time": 6.042565822601318,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to 60,  "
+        }
+    },
+    {
+        "id": 137,
+        "input": [
+            72,
+            68,
+            9
+        ],
+        "target": 13,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [9, 68, 72], got tokens from To solve an arithmetic expression that the to  ",
+            "time": 6.022149562835693,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  "
+        }
+    },
+    {
+        "id": 138,
+        "input": [
+            57,
+            1,
+            64
+        ],
+        "target": 6,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [1, 57, 64], got tokens from To create an arithmetic expression that the to     ",
+            "time": 6.045125961303711,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to     "
+        }
+    },
+    {
+        "id": 139,
+        "input": [
+            25,
+            52,
+            87
+        ],
+        "target": 60,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [25, 52, 87], got tokens from To create an arithmetic expression that the to  55, 5",
+            "time": 6.037767648696899,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  55, 5"
+        }
+    },
+    {
+        "id": 140,
+        "input": [
+            96,
+            99,
+            35
+        ],
+        "target": 32,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [35, 96, 99], got tokens from To solve an arithmetic expression that the to 999 99",
+            "time": 6.0402257442474365,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the to 999 99"
+        }
+    },
+    {
+        "id": 141,
+        "input": [
+            38,
+            100,
+            89
+        ],
+        "target": 49,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [38, 89, 100], got tokens from To solve an arithmetic expression that the to  88 ",
+            "time": 6.0473456382751465,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  88 "
+        }
+    },
+    {
+        "id": 142,
+        "input": [
+            28,
+            5,
+            11
+        ],
+        "target": 34,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [5, 11, 28], got tokens from To create an arithmetic expression that the the  28,    1111         \n",
+            "time": 6.128045082092285,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the the  28,    1111         \n"
+        }
+    },
+    {
+        "id": 143,
+        "input": [
+            43,
+            58,
+            61
+        ],
+        "target": 46,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [43, 58, 61], got tokens from To create an arithmetic expression that the to  33,  ",
+            "time": 6.060231924057007,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  33,  "
+        }
+    },
+    {
+        "id": 144,
+        "input": [
+            5,
+            76,
+            17
+        ],
+        "target": 98,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [5, 17, 76], got tokens from To create an arithmetic expression that evaluates to         ",
+            "time": 6.058096170425415,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that evaluates to         "
+        }
+    },
+    {
+        "id": 145,
+        "input": [
+            10,
+            36,
+            8
+        ],
+        "target": 38,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [8, 10, 36], got tokens from To create an arithmetic expression that the numbers  ,",
+            "time": 6.072364807128906,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the numbers  ,"
+        }
+    },
+    {
+        "id": 146,
+        "input": [
+            6,
+            96,
+            38
+        ],
+        "target": 64,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [6, 38, 96], got tokens from To solve an arithmetic expression that the to  66     ",
+            "time": 6.081898927688599,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the to  66     "
+        }
+    },
+    {
+        "id": 147,
+        "input": [
+            86,
+            36,
+            25
+        ],
+        "target": 25,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [25, 36, 86], got tokens from To create an arithmetic expression that the to  6, ",
+            "time": 6.075051546096802,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  6, "
+        }
+    },
+    {
+        "id": 148,
+        "input": [
+            25,
+            53,
+            8
+        ],
+        "target": 36,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [8, 25, 53], got tokens from To create an arithmetic expression that the the  ",
+            "time": 6.07830023765564,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the the  "
+        }
+    },
+    {
+        "id": 149,
+        "input": [
+            74,
+            85,
+            51
+        ],
+        "target": 62,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [51, 74, 85], got tokens from To create an arithmetic expression that the to  4 , ",
+            "time": 6.0759265422821045,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the to  4 , "
+        }
+    },
+    {
+        "id": 150,
+        "input": [
+            58,
+            55,
+            73
+        ],
+        "target": 76,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [55, 58, 73], got tokens from To create an arithmetic expression that the to 555  555",
+            "time": 6.097728490829468,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 555  555"
+        }
+    },
+    {
+        "id": 151,
+        "input": [
+            96,
+            44,
+            62
+        ],
+        "target": 10,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [44, 62, 96], got tokens from To create an arithmetic expression that the to  66, 44 ",
+            "time": 6.076908349990845,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the to  66, 44 "
+        }
+    },
+    {
+        "id": 152,
+        "input": [
+            68,
+            16,
+            89
+        ],
+        "target": 37,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [16, 68, 89], got tokens from To create an arithmetic expression that the to 68,  ,, ",
+            "time": 6.07586669921875,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 68,  ,, "
+        }
+    },
+    {
+        "id": 153,
+        "input": [
+            43,
+            25,
+            25
+        ],
+        "target": 43,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [25, 25, 43], got tokens from To create an arithmetic expression that evaluates to 43   ",
+            "time": 6.080113172531128,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to 43   "
+        }
+    },
+    {
+        "id": 154,
+        "input": [
+            79,
+            48,
+            81
+        ],
+        "target": 46,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [48, 79, 81], got tokens from To create an arithmetic expression that the to      ",
+            "time": 6.076664447784424,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to      "
+        }
+    },
+    {
+        "id": 155,
+        "input": [
+            57,
+            96,
+            38
+        ],
+        "target": 77,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [38, 57, 96], got tokens from To create an arithmetic expression that the to  77, ",
+            "time": 6.09578800201416,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  77, "
+        }
+    },
+    {
+        "id": 156,
+        "input": [
+            66,
+            71,
+            46
+        ],
+        "target": 51,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [46, 66, 71], got tokens from To create an arithmetic expression that the to  66, ",
+            "time": 6.09763765335083,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the to  66, "
+        }
+    },
+    {
+        "id": 157,
+        "input": [
+            83,
+            72,
+            16
+        ],
+        "target": 27,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [16, 72, 83], got tokens from To solve an arithmetic expression that the to  33, ",
+            "time": 6.080971717834473,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  33, "
+        }
+    },
+    {
+        "id": 158,
+        "input": [
+            10,
+            91,
+            11
+        ],
+        "target": 19,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [10, 11, 91], got tokens from To solve an arithmetic expression that the to 111, 1111",
+            "time": 6.241013765335083,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to 111, 1111"
+        }
+    },
+    {
+        "id": 159,
+        "input": [
+            34,
+            5,
+            1
+        ],
+        "target": 40,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [1, 5, 34], got tokens from To create an arithmetic expression that the to   4, ",
+            "time": 6.106600284576416,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to   4, "
+        }
+    },
+    {
+        "id": 160,
+        "input": [
+            44,
+            88,
+            25
+        ],
+        "target": 19,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [25, 44, 88], got tokens from To solve an arithmetic expression that the to  44, 8",
+            "time": 6.105901718139648,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  44, 8"
+        }
+    },
+    {
+        "id": 161,
+        "input": [
+            68,
+            32,
+            73
+        ],
+        "target": 37,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [32, 68, 73], got tokens from To create an arithmetic expression that the to 33       ",
+            "time": 6.1115195751190186,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 33       "
+        }
+    },
+    {
+        "id": 162,
+        "input": [
+            82,
+            96,
+            2
+        ],
+        "target": 16,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [2, 82, 96], got tokens from To solve an arithmetic expression that evaluates to   2",
+            "time": 6.0928754806518555,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that evaluates to   2"
+        }
+    },
+    {
+        "id": 163,
+        "input": [
+            76,
+            91,
+            66
+        ],
+        "target": 81,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [66, 76, 91], got tokens from To solve an arithmetic expression that the to  66  ",
+            "time": 6.118060350418091,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  66  "
+        }
+    },
+    {
+        "id": 164,
+        "input": [
+            78,
+            89,
+            97
+        ],
+        "target": 86,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [78, 89, 97], got tokens from To create an arithmetic expression that the to  8,  ",
+            "time": 6.102027177810669,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  8,  "
+        }
+    },
+    {
+        "id": 165,
+        "input": [
+            58,
+            12,
+            30
+        ],
+        "target": 76,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [12, 30, 58], got tokens from To create an arithmetic expression that the to   ,,    ",
+            "time": 6.136419057846069,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to   ,,    "
+        }
+    },
+    {
+        "id": 166,
+        "input": [
+            69,
+            18,
+            7
+        ],
+        "target": 58,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [7, 18, 69], got tokens from To solve an arithmetic expression that the the  69     ",
+            "time": 6.180538654327393,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the the  69     "
+        }
+    },
+    {
+        "id": 167,
+        "input": [
+            33,
+            21,
+            52
+        ],
+        "target": 2,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [21, 33, 52], got tokens from To solve an arithmetic expression that3 to exactly 3      ",
+            "time": 6.130120515823364,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that3 to exactly 3      "
+        }
+    },
+    {
+        "id": 168,
+        "input": [
+            81,
+            70,
+            4
+        ],
+        "target": 7,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [4, 70, 81], got tokens from To solve an arithmetic expression that evaluates to the  7",
+            "time": 6.112690687179565,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that evaluates to the  7"
+        }
+    },
+    {
+        "id": 169,
+        "input": [
+            24,
+            49,
+            34
+        ],
+        "target": 39,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [24, 34, 49], got tokens from To create an arithmetic expression that the to  44  ",
+            "time": 6.114013195037842,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  44  "
+        }
+    },
+    {
+        "id": 170,
+        "input": [
+            50,
+            49,
+            28
+        ],
+        "target": 27,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [28, 49, 50], got tokens from To create an arithmetic expression that the to    , ",
+            "time": 6.143268585205078,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to    , "
+        }
+    },
+    {
+        "id": 171,
+        "input": [
+            92,
+            43,
+            58
+        ],
+        "target": 77,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [43, 58, 92], got tokens from To create an arithmetic expression that the to    , ",
+            "time": 6.248886346817017,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to    , "
+        }
+    },
+    {
+        "id": 172,
+        "input": [
+            14,
+            69,
+            24
+        ],
+        "target": 31,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [14, 24, 69], got tokens from To solve an arithmetic expression that the to  11, ",
+            "time": 6.10520076751709,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  11, "
+        }
+    },
+    {
+        "id": 173,
+        "input": [
+            23,
+            22,
+            1
+        ],
+        "target": 2,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [1, 22, 23], got tokens from To create an arithmetic expression that the to  22",
+            "time": 6.07415246963501,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  22"
+        }
+    },
+    {
+        "id": 174,
+        "input": [
+            44,
+            22,
+            28
+        ],
+        "target": 38,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [22, 28, 44], got tokens from To create an arithmetic expression that the to  42, 2",
+            "time": 6.056028604507446,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  42, 2"
+        }
+    },
+    {
+        "id": 175,
+        "input": [
+            99,
+            79,
+            3
+        ],
+        "target": 23,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [3, 79, 99], got tokens from To create an arithmetic expression that the to  999",
+            "time": 6.046775817871094,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  999"
+        }
+    },
+    {
+        "id": 176,
+        "input": [
+            14,
+            7,
+            44
+        ],
+        "target": 65,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [7, 14, 44], got tokens from To create an arithmetic expression that the to  44    ",
+            "time": 6.0219902992248535,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the to  44    "
+        }
+    },
+    {
+        "id": 177,
+        "input": [
+            28,
+            27,
+            88
+        ],
+        "target": 87,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [27, 28, 88], got tokens from To create an arithmetic expression that the to 28,  8",
+            "time": 6.057072162628174,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 28,  8"
+        }
+    },
+    {
+        "id": 178,
+        "input": [
+            94,
+            57,
+            2
+        ],
+        "target": 35,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [2, 57, 94], got tokens from To create an arithmetic expression that the the  94    ",
+            "time": 6.0332348346710205,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the the  94    "
+        }
+    },
+    {
+        "id": 179,
+        "input": [
+            2,
+            87,
+            90
+        ],
+        "target": 5,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [2, 87, 90], got tokens from Toboxed an arithmetic expression that evaluates to    ",
+            "time": 5.984645843505859,
+            "flicker": 0.0,
+            "generated_text": "Toboxed an arithmetic expression that evaluates to    "
+        }
+    },
+    {
+        "id": 180,
+        "input": [
+            61,
+            89,
+            58
+        ],
+        "target": 30,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [58, 61, 89], got tokens from To create an arithmetic expression that the to  11, ",
+            "time": 6.0211122035980225,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  11, "
+        }
+    },
+    {
+        "id": 181,
+        "input": [
+            84,
+            41,
+            66
+        ],
+        "target": 23,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [41, 66, 84], got tokens from To solve an arithmetic expression that the to  44, 41, ",
+            "time": 6.001051187515259,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the to  44, 41, "
+        }
+    },
+    {
+        "id": 182,
+        "input": [
+            80,
+            54,
+            39
+        ],
+        "target": 65,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [39, 54, 80], got tokens from To create an arithmetic expression that the to  00, 5",
+            "time": 5.994889497756958,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  00, 5"
+        }
+    },
+    {
+        "id": 183,
+        "input": [
+            75,
+            17,
+            27
+        ],
+        "target": 6,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [17, 27, 75], got tokens from To create an arithmetic expression that7 to  77   ",
+            "time": 5.9572813510894775,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that7 to  77   "
+        }
+    },
+    {
+        "id": 184,
+        "input": [
+            49,
+            44,
+            7
+        ],
+        "target": 86,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [7, 44, 49], got tokens from To solve an arithmetic expression that the the  44  4  44         ",
+            "time": 5.941283702850342,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the the  44  4  44         "
+        }
+    },
+    {
+        "id": 185,
+        "input": [
+            97,
+            98,
+            97
+        ],
+        "target": 99,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [97, 97, 98], got tokens from To create an arithmetic expression that the to 999 9999",
+            "time": 5.9499781131744385,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 999 9999"
+        }
+    },
+    {
+        "id": 186,
+        "input": [
+            90,
+            52,
+            9
+        ],
+        "target": 29,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [9, 52, 90], got tokens from To create an arithmetic expression that the to  90,",
+            "time": 5.9455695152282715,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  90,"
+        }
+    },
+    {
+        "id": 187,
+        "input": [
+            44,
+            97,
+            22
+        ],
+        "target": 75,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [22, 44, 97], got tokens from To create an arithmetic expression that the to  44, ",
+            "time": 6.030392646789551,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  44, "
+        }
+    },
+    {
+        "id": 188,
+        "input": [
+            53,
+            3,
+            48
+        ],
+        "target": 37,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [3, 48, 53], got tokens from To create an arithmetic expression that the to  33      ",
+            "time": 6.062922954559326,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the to  33      "
+        }
+    },
+    {
+        "id": 189,
+        "input": [
+            22,
+            62,
+            88
+        ],
+        "target": 48,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [22, 62, 88], got tokens from To solve an arithmetic expression that the to  22  ",
+            "time": 6.096907615661621,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  22  "
+        }
+    },
+    {
+        "id": 190,
+        "input": [
+            67,
+            39,
+            70
+        ],
+        "target": 98,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [39, 67, 70], got tokens from To create an arithmetic expression that the to  7   ",
+            "time": 6.0298075675964355,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  7   "
+        }
+    },
+    {
+        "id": 191,
+        "input": [
+            18,
+            75,
+            68
+        ],
+        "target": 25,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [18, 68, 75], got tokens from To solve an arithmetic expression that the to  88, ",
+            "time": 5.994097471237183,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  88, "
+        }
+    },
+    {
+        "id": 192,
+        "input": [
+            10,
+            99,
+            96
+        ],
+        "target": 7,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [10, 96, 99], got tokens from To solve an arithmetic expression that evaluates to exactly     9",
+            "time": 5.984444618225098,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that evaluates to exactly     9"
+        }
+    },
+    {
+        "id": 193,
+        "input": [
+            94,
+            90,
+            86
+        ],
+        "target": 98,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [86, 90, 94], got tokens from To create an arithmetic expression that the to 99, 99,",
+            "time": 5.980173587799072,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 99, 99,"
+        }
+    },
+    {
+        "id": 194,
+        "input": [
+            6,
+            2,
+            38
+        ],
+        "target": 34,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [2, 6, 38], got tokens from To solve an arithmetic expression that the to      ",
+            "time": 5.969038486480713,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to      "
+        }
+    },
+    {
+        "id": 195,
+        "input": [
+            70,
+            8,
+            87
+        ],
+        "target": 25,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [8, 70, 87], got tokens from To solve an arithmetic expression that evaluates to   7    ",
+            "time": 5.973353385925293,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that evaluates to   7    "
+        }
+    },
+    {
+        "id": 196,
+        "input": [
+            6,
+            34,
+            51
+        ],
+        "target": 4,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [6, 34, 51], got tokens from To solve an arithmetic expression that evaluates to     ",
+            "time": 5.9739274978637695,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that evaluates to     "
+        }
+    },
+    {
+        "id": 197,
+        "input": [
+            78,
+            48,
+            45
+        ],
+        "target": 75,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [45, 48, 78], got tokens from To create an arithmetic expression that the to 788  ",
+            "time": 6.035886764526367,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 788  "
+        }
+    },
+    {
+        "id": 198,
+        "input": [
+            88,
+            15,
+            78
+        ],
+        "target": 5,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [15, 78, 88], got tokens from To solve an arithmetic expression that8 to exactly 88    ",
+            "time": 5.992232799530029,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that8 to exactly 88    "
+        }
+    },
+    {
+        "id": 199,
+        "input": [
+            53,
+            56,
+            46
+        ],
+        "target": 63,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [46, 53, 56], got tokens from To solve an arithmetic expression that the to  3      ",
+            "time": 5.977746963500977,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  3      "
+        }
+    },
+    {
+        "id": 200,
+        "input": [
+            59,
+            13,
+            21
+        ],
+        "target": 93,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [13, 21, 59], got tokens from To create an arithmetic expression that the to  9,  1,   11                                                                                                                                                                                                                                                                                                        1",
+            "time": 5.997700929641724,
+            "flicker": 19.8,
+            "generated_text": "To create an arithmetic expression that the to  9,  1,   11                                                                                                                                                                                                                                                                                                        1"
+        }
+    },
+    {
+        "id": 201,
+        "input": [
+            34,
+            30,
+            100
+        ],
+        "target": 96,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [30, 34, 100], got tokens from To solve an arithmetic expression that the to  30  ",
+            "time": 6.006444454193115,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  30  "
+        }
+    },
+    {
+        "id": 202,
+        "input": [
+            36,
+            34,
+            16
+        ],
+        "target": 18,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [16, 34, 36], got tokens from To solve an arithmetic expression that the to 36,  3,       ",
+            "time": 6.016371726989746,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to 36,  3,       "
+        }
+    },
+    {
+        "id": 203,
+        "input": [
+            83,
+            29,
+            100
+        ],
+        "target": 12,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [29, 83, 100], got tokens from To solve an arithmetic expression that the to      ",
+            "time": 6.045590877532959,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the to      "
+        }
+    },
+    {
+        "id": 204,
+        "input": [
+            30,
+            87,
+            4
+        ],
+        "target": 33,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [4, 30, 87], got tokens from To create an arithmetic expression that the the  33, ",
+            "time": 6.046269416809082,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the the  33, "
+        }
+    },
+    {
+        "id": 205,
+        "input": [
+            19,
+            45,
+            98
+        ],
+        "target": 34,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [19, 45, 98], got tokens from To solve an arithmetic expression that the numbers  9,  5,     ",
+            "time": 6.039748907089233,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the numbers  9,  5,     "
+        }
+    },
+    {
+        "id": 206,
+        "input": [
+            83,
+            45,
+            36
+        ],
+        "target": 92,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [36, 45, 83], got tokens from To create an arithmetic expression that the to  33  ",
+            "time": 6.038309097290039,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  33  "
+        }
+    },
+    {
+        "id": 207,
+        "input": [
+            68,
+            55,
+            86
+        ],
+        "target": 73,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [55, 68, 86], got tokens from To create an arithmetic expression that evaluates to  8      ",
+            "time": 6.058650970458984,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to  8      "
+        }
+    },
+    {
+        "id": 208,
+        "input": [
+            77,
+            43,
+            26
+        ],
+        "target": 60,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [26, 43, 77], got tokens from To create an arithmetic expression that the to  77    ",
+            "time": 6.054402828216553,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  77    "
+        }
+    },
+    {
+        "id": 209,
+        "input": [
+            79,
+            80,
+            47
+        ],
+        "target": 48,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [47, 79, 80], got tokens from To create an arithmetic expression that the to  77, ",
+            "time": 6.0701024532318115,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  77, "
+        }
+    },
+    {
+        "id": 210,
+        "input": [
+            54,
+            17,
+            67
+        ],
+        "target": 4,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [17, 54, 67], got tokens from To solve an arithmetic expression that the to exactly       ",
+            "time": 6.070004463195801,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the to exactly       "
+        }
+    },
+    {
+        "id": 211,
+        "input": [
+            24,
+            24,
+            34
+        ],
+        "target": 34,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [24, 24, 34], got tokens from To create an arithmetic expression that the to 24,  ",
+            "time": 6.060413837432861,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 24,  "
+        }
+    },
+    {
+        "id": 212,
+        "input": [
+            93,
+            11,
+            74
+        ],
+        "target": 30,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [11, 74, 93], got tokens from To create an arithmetic expression that the to  33, 11",
+            "time": 6.083347797393799,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  33, 11"
+        }
+    },
+    {
+        "id": 213,
+        "input": [
+            37,
+            71,
+            3
+        ],
+        "target": 37,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [3, 37, 71], got tokens from To create an arithmetic expression that the to  37",
+            "time": 6.072305917739868,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  37"
+        }
+    },
+    {
+        "id": 214,
+        "input": [
+            4,
+            7,
+            37
+        ],
+        "target": 48,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [4, 7, 37], got tokens from To create an arithmetic expression that7 to     ",
+            "time": 6.08055567741394,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that7 to     "
+        }
+    },
+    {
+        "id": 215,
+        "input": [
+            39,
+            96,
+            72
+        ],
+        "target": 52,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [39, 72, 96], got tokens from To solve an arithmetic expression that the to  9,, 9",
+            "time": 6.0787365436553955,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  9,, 9"
+        }
+    },
+    {
+        "id": 216,
+        "input": [
+            13,
+            65,
+            64
+        ],
+        "target": 12,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [13, 64, 65], got tokens from To solve an arithmetic expression that the to 113,     ",
+            "time": 6.091923952102661,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to 113,     "
+        }
+    },
+    {
+        "id": 217,
+        "input": [
+            74,
+            37,
+            48
+        ],
+        "target": 24,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [37, 48, 74], got tokens from To solve an arithmetic expression that the to  44, ",
+            "time": 6.079204797744751,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that the to  44, "
+        }
+    },
+    {
+        "id": 218,
+        "input": [
+            61,
+            13,
+            33
+        ],
+        "target": 41,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [13, 33, 61], got tokens from To create an arithmetic expression that the to  11  13333",
+            "time": 6.0778186321258545,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  11  13333"
+        }
+    },
+    {
+        "id": 219,
+        "input": [
+            35,
+            20,
+            11
+        ],
+        "target": 26,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [11, 20, 35], got tokens from To create an arithmetic expression that the to  55  2 ",
+            "time": 6.077953100204468,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  55  2 "
+        }
+    },
+    {
+        "id": 220,
+        "input": [
+            59,
+            58,
+            5
+        ],
+        "target": 4,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [5, 58, 59], got tokens from To create an arithmetic expression that evaluates to    5",
+            "time": 6.074337720870972,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to    5"
+        }
+    },
+    {
+        "id": 221,
+        "input": [
+            52,
+            45,
+            12
+        ],
+        "target": 5,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [12, 45, 52], got tokens from To solve an arithmetic expression that5 to  555  5",
+            "time": 6.071950197219849,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To solve an arithmetic expression that5 to  555  5"
+        }
+    },
+    {
+        "id": 222,
+        "input": [
+            57,
+            58,
+            28
+        ],
+        "target": 27,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [28, 57, 58], got tokens from To create an arithmetic expression that the to  77, ",
+            "time": 6.067378520965576,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  77, "
+        }
+    },
+    {
+        "id": 223,
+        "input": [
+            100,
+            23,
+            58
+        ],
+        "target": 65,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [23, 58, 100], got tokens from To create an arithmetic expression that evaluates to  100",
+            "time": 6.0568201541900635,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that evaluates to  100"
+        }
+    },
+    {
+        "id": 224,
+        "input": [
+            76,
+            50,
+            50
+        ],
+        "target": 76,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [50, 50, 76], got tokens from To create an arithmetic expression that evaluates to   0",
+            "time": 6.045307636260986,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to   0"
+        }
+    },
+    {
+        "id": 225,
+        "input": [
+            90,
+            70,
+            30
+        ],
+        "target": 10,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [30, 70, 90], got tokens from To create an arithmetic expression that the to  00, 0",
+            "time": 6.0148961544036865,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  00, 0"
+        }
+    },
+    {
+        "id": 226,
+        "input": [
+            92,
+            81,
+            82
+        ],
+        "target": 71,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [81, 82, 92], got tokens from To solve an arithmetic expression that the to  1,, ",
+            "time": 6.009227752685547,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  1,, "
+        }
+    },
+    {
+        "id": 227,
+        "input": [
+            13,
+            98,
+            99
+        ],
+        "target": 12,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [13, 98, 99], got tokens from To solve an arithmetic expression that the to 13,  9, 9999",
+            "time": 6.009786367416382,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to 13,  9, 9999"
+        }
+    },
+    {
+        "id": 228,
+        "input": [
+            49,
+            55,
+            53
+        ],
+        "target": 51,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [49, 53, 55], got tokens from To create an arithmetic expression that the to  55, 5555",
+            "time": 6.030355930328369,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  55, 5555"
+        }
+    },
+    {
+        "id": 229,
+        "input": [
+            28,
+            4,
+            25
+        ],
+        "target": 49,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [4, 25, 28], got tokens from To create an arithmetic expression that the the  2,,  ,  ",
+            "time": 6.020562410354614,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the the  2,,  ,  "
+        }
+    },
+    {
+        "id": 230,
+        "input": [
+            43,
+            41,
+            24
+        ],
+        "target": 26,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [24, 41, 43], got tokens from To create an arithmetic expression that the to         ",
+            "time": 6.055452585220337,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to         "
+        }
+    },
+    {
+        "id": 231,
+        "input": [
+            7,
+            92,
+            30
+        ],
+        "target": 69,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [7, 30, 92], got tokens from To solve an arithmetic expression that evaluates to     using the ",
+            "time": 6.0433030128479,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that evaluates to     using the "
+        }
+    },
+    {
+        "id": 232,
+        "input": [
+            28,
+            23,
+            28
+        ],
+        "target": 23,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [23, 28, 28], got tokens from To create an arithmetic expression that evaluates to 222  2  ",
+            "time": 6.05676007270813,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to 222  2  "
+        }
+    },
+    {
+        "id": 233,
+        "input": [
+            71,
+            18,
+            14
+        ],
+        "target": 67,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [14, 18, 71], got tokens from To create an arithmetic expression that the to  11 111",
+            "time": 6.071510314941406,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  11 111"
+        }
+    },
+    {
+        "id": 234,
+        "input": [
+            48,
+            29,
+            16
+        ],
+        "target": 93,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [16, 29, 48], got tokens from To create an arithmetic expression that the to              ",
+            "time": 6.059754133224487,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to              "
+        }
+    },
+    {
+        "id": 235,
+        "input": [
+            8,
+            58,
+            90
+        ],
+        "target": 24,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [8, 58, 90], got tokens from To solve an arithmetic expression that evaluates to      ",
+            "time": 6.077881813049316,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that evaluates to      "
+        }
+    },
+    {
+        "id": 236,
+        "input": [
+            19,
+            3,
+            5
+        ],
+        "target": 52,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [3, 5, 19], got tokens from To create an arithmetic expression that the to      ",
+            "time": 6.073096036911011,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to      "
+        }
+    },
+    {
+        "id": 237,
+        "input": [
+            54,
+            70,
+            8
+        ],
+        "target": 8,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [8, 54, 70], got tokens from To create an arithmetic expression that evaluates to the  ",
+            "time": 6.080209255218506,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to the  "
+        }
+    },
+    {
+        "id": 238,
+        "input": [
+            22,
+            58,
+            36
+        ],
+        "target": 44,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [22, 36, 58], got tokens from To create an arithmetic expression that the to  22, ",
+            "time": 6.081816911697388,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  22, "
+        }
+    },
+    {
+        "id": 239,
+        "input": [
+            95,
+            73,
+            7
+        ],
+        "target": 29,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [7, 73, 95], got tokens from To create an arithmetic expression that the to  9",
+            "time": 6.077827215194702,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  9"
+        }
+    },
+    {
+        "id": 240,
+        "input": [
+            51,
+            60,
+            99
+        ],
+        "target": 11,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [51, 60, 99], got tokens from To create an arithmetic expression that the to  11, ",
+            "time": 6.073851108551025,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  11, "
+        }
+    },
+    {
+        "id": 241,
+        "input": [
+            57,
+            78,
+            55
+        ],
+        "target": 80,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [55, 57, 78], got tokens from To create an arithmetic expression that the to  77, ",
+            "time": 6.077513694763184,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  77, "
+        }
+    },
+    {
+        "id": 242,
+        "input": [
+            52,
+            89,
+            25
+        ],
+        "target": 12,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [25, 52, 89], got tokens from To solve an arithmetic expression that the to  22, ",
+            "time": 6.077200651168823,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  22, "
+        }
+    },
+    {
+        "id": 243,
+        "input": [
+            66,
+            73,
+            60
+        ],
+        "target": 67,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [60, 66, 73], got tokens from To create an arithmetic expression that the to  66  ",
+            "time": 6.101109504699707,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  66  "
+        }
+    },
+    {
+        "id": 244,
+        "input": [
+            99,
+            68,
+            95
+        ],
+        "target": 64,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [68, 95, 99], got tokens from To create an arithmetic expression that evaluates to  999 ",
+            "time": 6.099676609039307,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that evaluates to  999 "
+        }
+    },
+    {
+        "id": 245,
+        "input": [
+            46,
+            56,
+            67
+        ],
+        "target": 35,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [46, 56, 67], got tokens from To create an arithmetic expression that the to  66, ",
+            "time": 6.131103038787842,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  66, "
+        }
+    },
+    {
+        "id": 246,
+        "input": [
+            27,
+            16,
+            63
+        ],
+        "target": 74,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [16, 27, 63], got tokens from To create an arithmetic expression that the to  7,,  ,   ",
+            "time": 6.095988035202026,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  7,,  ,   "
+        }
+    },
+    {
+        "id": 247,
+        "input": [
+            51,
+            99,
+            13
+        ],
+        "target": 61,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [13, 51, 99], got tokens from To create an arithmetic expression that the to  11, 9",
+            "time": 6.076078176498413,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  11, 9"
+        }
+    },
+    {
+        "id": 248,
+        "input": [
+            88,
+            92,
+            76
+        ],
+        "target": 80,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [76, 88, 92], got tokens from To create an arithmetic expression that the to 888, ",
+            "time": 6.103423595428467,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 888, "
+        }
+    },
+    {
+        "id": 249,
+        "input": [
+            18,
+            89,
+            9
+        ],
+        "target": 98,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [9, 18, 89], got tokens from To create an arithmetic expression that the numbers  88, ",
+            "time": 6.126303672790527,
+            "flicker": 0.06666666666666667,
+            "generated_text": "To create an arithmetic expression that the numbers  88, "
+        }
+    },
+    {
+        "id": 250,
+        "input": [
+            80,
+            1,
+            21
+        ],
+        "target": 60,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [1, 21, 80], got tokens from To create an arithmetic expression that the the  0",
+            "time": 6.123389959335327,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the the  0"
+        }
+    },
+    {
+        "id": 251,
+        "input": [
+            33,
+            73,
+            94
+        ],
+        "target": 54,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [33, 73, 94], got tokens from To create an arithmetic expression that the to 333, 33   3 ",
+            "time": 6.093915224075317,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 333, 33   3 "
+        }
+    },
+    {
+        "id": 252,
+        "input": [
+            47,
+            100,
+            78
+        ],
+        "target": 25,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [47, 78, 100], got tokens from To create an arithmetic expression that the to  77  ",
+            "time": 6.099125862121582,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  77  "
+        }
+    },
+    {
+        "id": 253,
+        "input": [
+            94,
+            44,
+            11
+        ],
+        "target": 90,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [11, 44, 94], got tokens from To create an arithmetic expression that the to 94,  44  111  ",
+            "time": 6.098938465118408,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to 94,  44  111  "
+        }
+    },
+    {
+        "id": 254,
+        "input": [
+            17,
+            92,
+            77
+        ],
+        "target": 32,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [17, 77, 92], got tokens from To solve an arithmetic expression that the to  7,  ",
+            "time": 6.1176347732543945,
+            "flicker": 0.0,
+            "generated_text": "To solve an arithmetic expression that the to  7,  "
+        }
+    },
+    {
+        "id": 255,
+        "input": [
+            21,
+            39,
+            89
+        ],
+        "target": 71,
+        "ASMS": {
+            "is_correct": false,
+            "reason": "Invalid numbers used. Expected [21, 39, 89], got tokens from To create an arithmetic expression that the to  1,   ",
+            "time": 6.119723558425903,
+            "flicker": 0.0,
+            "generated_text": "To create an arithmetic expression that the to  1,   "
+        }
+    }
+]
