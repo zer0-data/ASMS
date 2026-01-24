@@ -138,6 +138,9 @@ def main():
     # Kinetic-only
     parser.add_argument("--no_semantic", action="store_true")
     
+    # Identity Gating
+    parser.add_argument("--identity_gating", action="store_true", help="Enable strict Identity-Gated Momentum (Debounce)")
+    
     parser.add_argument("--name", type=str, default="experiment")
     parser.add_argument("--num_examples", type=int, default=None, help="Number of examples to run (default: all)")
     parser.add_argument("--steps", type=int, default=64, help="Generation steps")
@@ -191,7 +194,9 @@ def main():
         current_params["breakout_thresh"] = args.tau
         current_params["beta_up"] = args.beta_up
         current_params["lambda_down"] = args.lambda_down
+        current_params["lambda_down"] = args.lambda_down
         current_params["semantic"] = not args.no_semantic
+        current_params["identity_gating"] = args.identity_gating
 
     configurations = [{"name": args.name, "params": current_params}]
     

@@ -29,7 +29,8 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                  conf_alg='random', mode="linear", rcr=False, top_p=None, top_k=None,
                  # ASMS arguments
                  asms=False, beta_base=0.8, h_peak=0.1, lambda_mom=0.5, sim_thresh=0.5, breakout_thresh=0.85,
-                 semantic=True, # New argument for Kinetic-Only Mode
+                 asms=False, beta_base=0.8, h_peak=0.1, lambda_mom=0.5, sim_thresh=0.5, breakout_thresh=0.85,
+                 semantic=True, identity_gating=False, # New argument for Identity-Gated Mode
                  # ASMS Elastic Mode (Asymmetric Momentum)
                  elastic=False, beta_up=0.9, lambda_down=1.5,
                  # Optimization
@@ -71,6 +72,11 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                 input_embeddings = model.get_input_embeddings().weight
                 vocab_size = input_embeddings.shape[0]
                 max_entropy = np.log(vocab_size)
+            
+            # Identity Gating State: Track previous tokens
+            if identity_gating:
+                prev_x0 = torch.full_like(x, mask_id)
+            
             
             # Precompute Gamma-Skewed Parameters
             # Gamma calculation for peak at h_peak
@@ -140,41 +146,71 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                         final_score = confidence
                     else:
                         # Standard ASMS Logic
-                        if semantic:
+                        if identity_gating:
+                            # Identity-Gated Momentum with ACTIVE BRAKING (Back EMF)
+                            # If token ID changed: Apply penalty to send to "Penalty Box"
+                            # If token ID same: momentum preserved (similarity=1).
+                            # similarity = (x0 == prev_x0).float() 
+                            # We need to handle the update logic differently for braking.
+                            # If match: similarity=1, standard update.
+                            # If mismatch: we force momentum_updated to be negative.
+                            
+                            is_match = (x0 == prev_x0)
+                            similarity = is_match.float()
+                            
+                            # Standard update first
+                            # Gamma-Skewed Entropy-Gated Decay
+                            # Use precomputed log_p for stability
+                            # Avoid NaNs: mask out p near zero before multiplying by log_p
+                            entropy = -torch.sum(torch.where(p > 1e-8, p * log_p, torch.zeros_like(p)), dim=-1) # (B, L)
+                            norm_entropy = entropy / max_entropy # (B, L)
+                            beta_t = beta_base * z_factor * (norm_entropy.pow(gamma)) * (1 - norm_entropy)
+                            beta_t = torch.nan_to_num(beta_t, nan=0.0)
+                            
+                            delta_C = confidence - prev_confidence
+                            momentum_updated = delta_C + beta_t * similarity * momentum_buffer
+                            
+                            # ACTIVE BRAKING: Overwrite if mismatch
+                            # If x0 != prev_x0, set momentum to -0.5 (Penalty Box)
+                            momentum_updated = torch.where(is_match, momentum_updated, torch.tensor(-0.5, device=x.device))
+                            
+                        elif semantic:
                             # Optimized cosine similarity: dot product of normalized vectors
                             similarity = torch.sum(current_embeddings_norm * prev_x0_embeddings, dim=-1) # (B, L)
+                            
+                            # Gamma-Skewed Entropy-Gated Decay
+                            entropy = -torch.sum(torch.where(p > 1e-8, p * log_p, torch.zeros_like(p)), dim=-1) # (B, L)
+                            norm_entropy = entropy / max_entropy # (B, L)
+                            beta_t = beta_base * z_factor * (norm_entropy.pow(gamma)) * (1 - norm_entropy)
+                            beta_t = torch.nan_to_num(beta_t, nan=0.0)
+                            
+                            delta_C = confidence - prev_confidence
+                            # Elastic Mode check inside semantic/else block? 
+                            # The original code structure had the decay calc shared.
+                            # Let's refactor slightly to avoid duplication if possible, 
+                            # or just duplicated for clarity since identity_gating overrides heavily.
+                            
+                            # Elastic Mode: Asymmetric momentum (easy to rise, hard to fall)
+                            if elastic:
+                                delta_scale = torch.where(delta_C > 0, torch.ones_like(delta_C), lambda_down)
+                                buffer_scale = torch.where(delta_C > 0, beta_up, beta_up * 0.5)
+                                momentum_updated = delta_scale * delta_C + buffer_scale * beta_t * similarity * momentum_buffer
+                            else:
+                                momentum_updated = delta_C + beta_t * similarity * momentum_buffer
+                                
                         else:
                             similarity = 1.0
-                        
-                        # Gamma-Skewed Entropy-Gated Decay
-                        # Use precomputed log_p for stability
-                        # Avoid NaNs: mask out p near zero before multiplying by log_p
-                        entropy = -torch.sum(torch.where(p > 1e-8, p * log_p, torch.zeros_like(p)), dim=-1) # (B, L)
-                        # max_entropy precomputed outside loop
-                        norm_entropy = entropy / max_entropy # (B, L)
-                        
-                        # Gamma-Skewed Beta Calculation
-                        # beta_t = beta_base * Z * (H^gamma) * (1 - H)
-                        beta_t = beta_base * z_factor * (norm_entropy.pow(gamma)) * (1 - norm_entropy)
-                        
-                        # Handle numerical instability or NaNs if any
-                        beta_t = torch.nan_to_num(beta_t, nan=0.0)
-                        
-                        # Momentum Update
-                        delta_C = confidence - prev_confidence
-                        
-                        # Elastic Mode: Asymmetric momentum (easy to rise, hard to fall)
-                        if elastic:
-                            # When confidence is RISING (delta_C > 0): Use beta_up (0.9) to keep momentum stable
-                            # When confidence is FALLING (delta_C < 0): Use lambda_down (1.5) to punish harder
-                            # The key insight: we scale the DELTA, not just the buffer
-                            # Rising: momentum carries forward smoothly
-                            # Falling: negative delta is amplified, making score drop faster
-                            delta_scale = torch.where(delta_C > 0, torch.ones_like(delta_C), lambda_down)
-                            buffer_scale = torch.where(delta_C > 0, beta_up, beta_up * 0.5)  # Dampen buffer on drops
-                            momentum_updated = delta_scale * delta_C + buffer_scale * beta_t * similarity * momentum_buffer
-                        else:
+                            
+                            # Gamma-Skewed Entropy-Gated Decay
+                            entropy = -torch.sum(torch.where(p > 1e-8, p * log_p, torch.zeros_like(p)), dim=-1) # (B, L)
+                            norm_entropy = entropy / max_entropy # (B, L)
+                            beta_t = beta_base * z_factor * (norm_entropy.pow(gamma)) * (1 - norm_entropy)
+                            beta_t = torch.nan_to_num(beta_t, nan=0.0)
+                            
+                            delta_C = confidence - prev_confidence
                             momentum_updated = delta_C + beta_t * similarity * momentum_buffer
+                        
+
                     
                     # Update State (Always happens)
                     momentum_buffer = momentum_updated.clone()
@@ -183,6 +219,8 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                     if semantic:
                         # Store normalized embeddings for next step's similarity calculation
                         prev_x0_embeddings = current_embeddings_norm.clone()
+                    if identity_gating:
+                        prev_x0 = x0.clone()
                     
                     # Compute Remasking Score
                     # If confidence > breakout, trust region activated
