@@ -29,7 +29,7 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                  conf_alg='random', mode="linear", rcr=False, top_p=None, top_k=None,
                  # ASMS arguments
                  asms=False, beta_base=0.8, h_peak=0.1, lambda_mom=0.5, sim_thresh=0.5, breakout_thresh=0.85,
-                 asms=False, beta_base=0.8, h_peak=0.1, lambda_mom=0.5, sim_thresh=0.5, breakout_thresh=0.85,
+
                  semantic=True, identity_gating=False, # New argument for Identity-Gated Mode
                  # ASMS Elastic Mode (Asymmetric Momentum)
                  elastic=False, beta_up=0.9, lambda_down=1.5,
@@ -171,8 +171,14 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                             momentum_updated = delta_C + beta_t * similarity * momentum_buffer
                             
                             # ACTIVE BRAKING: Overwrite if mismatch
-                            # If x0 != prev_x0, set momentum to -0.5 (Penalty Box)
-                            momentum_updated = torch.where(is_match, momentum_updated, torch.tensor(-0.5, device=x.device))
+                            # If x0 != prev_x0:
+                            #   If confidence > breakout, Reset to 0 (Epiphany / Debt Forgiveness)
+                            #   Else, set momentum to -0.5 (Penalty Box)
+                            brake_val = torch.tensor(-0.5, device=x.device)
+                            reset_val = torch.zeros_like(brake_val)
+                            mismatch_val = torch.where(confidence > breakout_thresh, reset_val, brake_val)
+                            
+                            momentum_updated = torch.where(is_match, momentum_updated, mismatch_val)
                             
                         elif semantic:
                             # Optimized cosine similarity: dot product of normalized vectors

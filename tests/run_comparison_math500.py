@@ -8,6 +8,7 @@ from tqdm import tqdm
 from datasets import load_dataset
 from transformers import AutoTokenizer
 from asms import LLaDAModelLM, sample
+import argparse
 
 # ==========================================
 # 1. MATH-500 Utilities
@@ -147,9 +148,13 @@ def main():
     if hasattr(model.config, 'mask_token_id') and model.config.mask_token_id is not None:
         mask_id = model.config.mask_token_id
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--num_examples", type=int, default=10, help="Number of examples to run")
+    args = parser.parse_args()
+
     print("Loading MATH-500 Subset...")
     dataset = load_dataset("HuggingFaceH4/MATH-500", split="test")
-    dataset = dataset.select(range(10)) # Top 10 examples
+    dataset = dataset.select(range(args.num_examples)) # User defined samples
 
     results = []
     
@@ -238,9 +243,9 @@ def main():
     with open("compare_rcr_identity.json", "w") as f:
         json.dump(results, f, indent=4)
         
-    print("\nFinal Results (N=10):")
-    print(f"RCR:      Acc={metrics['rcr']['corr']}/10, Avg Flicker={metrics['rcr']['flicker']/10:.2f}")
-    print(f"Identity: Acc={metrics['identity']['corr']}/10, Avg Flicker={metrics['identity']['flicker']/10:.2f}")
+    print(f"\nFinal Results (N={args.num_examples}):")
+    print(f"RCR:      Acc={metrics['rcr']['corr']}/{args.num_examples}, Avg Flicker={metrics['rcr']['flicker']/args.num_examples:.2f}")
+    print(f"Identity: Acc={metrics['identity']['corr']}/{args.num_examples}, Avg Flicker={metrics['identity']['flicker']/args.num_examples:.2f}")
 
 if __name__ == "__main__":
     main()
