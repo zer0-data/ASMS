@@ -62,6 +62,10 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
             # Precompute embedding shape for initialization
             max_entropy = 0.0
             prev_x0_embeddings = None
+            
+            # Retry Count for Mercy Rule (Zeno Breaker)
+            retry_counts = torch.zeros_like(x, dtype=torch.long)
+            
             if semantic:
                 input_embeddings = model.get_input_embeddings().weight
                 embed_dim = input_embeddings.shape[1]
@@ -173,8 +177,15 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                             # ACTIVE BRAKING: Overwrite if mismatch
                             # If x0 != prev_x0:
                             #   If confidence > breakout, Reset to 0 (Epiphany / Debt Forgiveness)
-                            #   Else, set momentum to -0.5 (Penalty Box)
-                            brake_val = torch.tensor(-0.5, device=x.device)
+                            #   Else, set momentum to penalty (Penalty Box)
+                            
+                            # Dynamic Penalty (Warm-up / Freeze)
+                            # i is current step in block, steps_per_block is total steps
+                            progress = i / steps_per_block
+                            # Warm-up: -0.1 at start -> Freeze: -1.0 at end
+                            dynamic_brake = -0.1 + (progress * -0.9)
+                            
+                            brake_val = torch.tensor(dynamic_brake, device=x.device)
                             reset_val = torch.zeros_like(brake_val)
                             mismatch_val = torch.where(confidence > breakout_thresh, reset_val, brake_val)
                             
@@ -233,6 +244,14 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                     if not is_first_step:
                         score = confidence + lambda_mom * momentum_updated
                         final_score = torch.where(confidence > breakout_thresh, confidence, score)
+                        
+                        # Mercy Rule (Zeno Breaker)
+                        # If retry_counts > 3, Force Stability (High Confidence)
+                        # This prevents "schizophrenic" loops where a token is ionized repeatedly
+                        zeno_mask = retry_counts > 3
+                        # 999.0 is effectively infinite stability
+                        final_score = torch.where(zeno_mask, torch.tensor(999.0, device=x.device), final_score)
+                        
                         # Use final_score as confidence for masking selection
                         confidence = final_score
                     else:
@@ -254,6 +273,10 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                         top2_probs = sorted_probs[..., 1]
                     confidence = top1_probs - top2_probs
                 
+                # Save Binding Energy Scores for Ionization (before -inf masking)
+                if asms:
+                   current_scores = confidence.clone()
+                
                 # Ensure we don't process tokens beyond the current block
                 confidence[:, end_idx:] = -np.inf
                 # Update masked tokens
@@ -268,10 +291,20 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                     # Select tokens to transfer based on confidence
                     for j in range(confidence.shape[0]):
                         num_tokens = num_transfer_tokens[j, i].item()
-                        if rcr and not asms:
+                        if rcr:
                             _, select_indices = torch.topk(confidence[j], k=num_transfer_tokens[j, i:].sum().item())
                             x[j, select_indices] = x0[j, select_indices]
                             overtime_confidence[j, select_indices] = confidence[j, select_indices].clone()
+                            
+                            # Bohr-Kinetic Ionization: Continually update scores for ALL tokens if ASMS is active
+                            # This allows us to spot "Rotting Orbits" (tokens that were stable but started flickering)
+                            if asms:
+                                # We want to update overtime_confidence for valid tokens based on current Binding Energy
+                                # current_scores holds the Net Binding Energy for ALL tokens
+                                # We only update filled positions (x != mask_id)
+                                filled_mask = (x[j] != mask_id)
+                                overtime_confidence[j, filled_mask] = current_scores[j, filled_mask]
+                            
                             # if (x[j,:] == mask_id).sum() <= 0:
                             if i != (steps_per_block - 1):
                                 overtime_conf_wo_zeros = \
@@ -282,6 +315,8 @@ def sample(model, prompt, mask_id, prompt_mask=None, steps=64, gen_length=128, b
                                 if len(mask_select_indices) == 0:
                                     break
                                 x[j, mask_select_indices] = mask_id
+                                # Increment Retry Count for Ionized Tokens
+                                retry_counts[j, mask_select_indices] += 1
                         else:
                             if num_tokens > 0:
                                 _, select_indices = torch.topk(confidence[j], k=num_tokens)

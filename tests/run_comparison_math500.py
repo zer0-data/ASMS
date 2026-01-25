@@ -158,9 +158,10 @@ def main():
 
     results = []
     
-    # Parameters for Identity Gating
+    # Parameters for Bohr-Kinetic Sampling
     asms_params = {
         "asms": True,
+        "rcr": True, # ENABLE IONIZATION (Bohr-Kinetic)
         "elastic": True,
         "identity_gating": True,
         "beta_base": 0.8,
@@ -169,19 +170,13 @@ def main():
         "breakout_thresh": 0.85,
         "lambda_down": 1.5,
         "beta_up": 0.9,
-        "semantic": True # Original plan said Kinetic-only? User said "Identity Gating" which usually implies Kinetic+Identity? 
-                         # Actually theory says "Identity Gating" often replaces "Semantic".
-                         # But the key is "Active Braking" on identity mismatch.
-                         # Let's keep strict identity gating which usually implies we don't need semantic, 
-                         # but the code supports both. Let's use strict Identity Gating primarily.
-                         # Wait, if identity_gating is True, the code in generation.py DOES use 'similarity = (x0==prev_x0)'
-                         # and overrides semantic similarity. So 'semantic' param doesn't matter much there.
+        "semantic": True 
     }
     
-    print("\nRunning Comparison: Trusted RCR vs Identity Gating")
+    print("\nRunning Comparison: Trusted RCR vs Bohr-Kinetic")
     print("="*60)
     
-    metrics = {"rcr": {"corr": 0, "flicker": 0}, "identity": {"corr": 0, "flicker": 0}}
+    metrics = {"rcr": {"corr": 0, "flicker": 0}, "bohr_kinetic": {"corr": 0, "flicker": 0}}
     
     for idx, example in enumerate(tqdm(dataset)):
         question = example.get("problem", "")
@@ -197,7 +192,7 @@ def main():
         
         # 1. Trusted RCR
         try:
-            start = time.time()
+            # start = time.time()
             out_rcr, f_rcr = generate_rcr(model, input_ids, mask_id, steps=256, gen_length=512, block_length=128)
             txt_rcr = tokenizer.decode(out_rcr[0, input_ids.shape[1]:], skip_special_tokens=True)
             pred_rcr = extract_answer_model_output(txt_rcr)
@@ -210,29 +205,27 @@ def main():
             print(f"RCR Error: {e}")
             sample_res["rcr"] = {"error": str(e)}
 
-        # 2. Identity Gating
+        # 2. Bohr-Kinetic (Orbital ASMS)
         try:
-            start = time.time()
-            # sample returns: x, intermediate_results, confidence, inputs
-            out_ig, inter_ig, _, _ = sample(
+            # start = time.time()
+            # Aligned block_length to 128 to match RCR and allow Warm-up/Freeze cycle to work
+            out_bk, inter_bk, _, _ = sample(
                 model, input_ids, mask_id=mask_id, 
-                steps=256, gen_length=512, block_length=2,
+                steps=256, gen_length=512, block_length=128,
                 return_intermediates=True,
                 **asms_params
             )
-            f_ig = calculate_flicker(inter_ig)
-            txt_ig = tokenizer.decode(out_ig[0], skip_special_tokens=True) # sample returns only generated part usually? 
-            # asms.sample returns: x[:, -gen_length:]
-            # so we just decode that directly
-            pred_ig = extract_answer_model_output(txt_ig)
-            corr_ig = check_equality_heuristic(pred_ig, gold_answer)
+            f_bk = calculate_flicker(inter_bk)
+            txt_bk = tokenizer.decode(out_bk[0], skip_special_tokens=True)
+            pred_bk = extract_answer_model_output(txt_bk)
+            corr_bk = check_equality_heuristic(pred_bk, gold_answer)
             
-            sample_res["identity"] = {"pred": pred_ig, "corr": corr_ig, "flicker": f_ig, "txt": txt_ig}
-            metrics["identity"]["corr"] += corr_ig
-            metrics["identity"]["flicker"] += f_ig
+            sample_res["bohr_kinetic"] = {"pred": pred_bk, "corr": corr_bk, "flicker": f_bk, "txt": txt_bk}
+            metrics["bohr_kinetic"]["corr"] += corr_bk
+            metrics["bohr_kinetic"]["flicker"] += f_bk
         except Exception as e:
-            print(f"Identity Error: {e}")
-            sample_res["identity"] = {"error": str(e)}
+            print(f"Bohr-Kinetic Error: {e}")
+            sample_res["bohr_kinetic"] = {"error": str(e)}
             
         results.append(sample_res)
         
@@ -245,7 +238,7 @@ def main():
         
     print(f"\nFinal Results (N={args.num_examples}):")
     print(f"RCR:      Acc={metrics['rcr']['corr']}/{args.num_examples}, Avg Flicker={metrics['rcr']['flicker']/args.num_examples:.2f}")
-    print(f"Identity: Acc={metrics['identity']['corr']}/{args.num_examples}, Avg Flicker={metrics['identity']['flicker']/args.num_examples:.2f}")
+    print(f"Bohr-Kinetic: Acc={metrics['bohr_kinetic']['corr']}/{args.num_examples}, Avg Flicker={metrics['bohr_kinetic']['flicker']/args.num_examples:.2f}")
 
 if __name__ == "__main__":
     main()
